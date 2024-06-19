@@ -1,0 +1,585 @@
+time,station_name,bikes_available
+2023-01-01 00:00:00,Berliner Platz,8
+2023-01-01 00:00:00,Rathaus,9
+2023-01-01 00:00:00,Kopstadtplatz,4
+2023-01-01 00:00:00,Viehofer Str. 41,7
+2023-01-01 00:00:00,Philharmonie,7
+2023-01-01 00:00:00,Hirschlandplatz,6
+2023-01-01 00:00:00,Rüttenscheider Stern,4
+2023-01-01 00:00:00,Messe Ost/Gruga,3
+2023-01-01 00:00:00,Gemarkenplatz,2
+2023-01-01 00:00:00,Uniklinikum,1
+2023-01-01 00:00:00,Kettwig Brücke,8
+2023-01-01 00:00:00,Kettwig Bahnhof,5
+2023-01-01 00:00:00,Werden Bahnhof,12
+2023-01-01 00:00:00,Hügel / Regattahaus,4
+2023-01-01 00:00:00,Margarethenhöhe,4
+2023-01-01 00:00:00,Universitätsstr.,18
+2023-01-01 00:00:00,Mobilstation Steele,4
+2023-01-01 00:00:00,Essen Südbahnhof,2
+2023-01-01 00:00:00,Essen Hauptbahnhof Nordausgang,2
+2023-01-01 00:00:00,Helbingstraße / RVR / Emschergen.,0
+2023-01-01 00:00:00,Bredeney,8
+2023-01-01 00:00:00,Essen Hauptbahnhof Südausgang,1
+2023-01-01 00:00:00,Essen Westbahnhof,16
+2023-01-01 00:00:00,Stadtwaldplatz,4
+2023-01-01 00:00:00,Paulinenstr.,8
+2023-01-01 00:00:00,Grendplatz,8
+2023-01-01 00:00:00,Essen Borbeck Bahnhof,3
+2023-01-01 00:00:00,Breslauer Str.,2
+2023-01-01 00:00:00,Altenessen Bahnhof,7
+2023-01-01 00:00:00,Altenessen Mitte,8
+2023-01-01 00:00:00,Frohnhauser Platz,4
+2023-01-01 00:00:00,Gervinusstraße,5
+2023-01-01 00:00:00,Versorgungsamt,6
+2023-01-01 00:00:00,RVR,2
+2023-01-01 00:00:00,Karlsplatz,4
+2023-01-01 00:00:00,M1 - Tenderweg,3
+2023-01-01 00:00:00,Röntgenstr.,6
+2023-01-01 00:00:00,Universität,25
+2023-01-01 00:00:00,Vereinstr.,10
+2023-01-01 00:00:00,Mobilstation Parkfriedhof,6
+2023-01-01 00:00:00,Huttropstraße,0
+2023-01-01 00:00:00,Isenbergstr.,2
+2023-01-01 00:00:00,Martinstr.,0
+2023-01-01 00:00:00,Girardethaus,5
+2023-01-01 00:00:00,Mobilstation Florastraße,7
+2023-01-01 00:00:00,EVAG-Betriebshof Mitte,12
+2023-01-01 00:00:00,I. Dellbrügge / Kettwiger Str.,1
+2023-01-01 00:00:00,Ruhrallee,4
+2023-01-01 00:00:00,EVAG-Betriebshof Schweriner Str.,1
+2023-01-01 00:00:00,Klarastraße,2
+2023-01-01 00:00:00,Rüttenscheider Platz,3
+2023-01-01 00:00:00,Mobilstation Kronprinzenstrasse,0
+2023-01-01 00:00:00,Westviertel,13
+2023-01-01 00:00:00,Rheinischer Platz,5
+2023-01-01 00:00:00,Univiertel,6
+2023-01-01 00:00:00,Universität/AStA,19
+2023-01-01 00:00:00,Mobilstation Landgericht,0
+2023-01-01 00:00:00,Virchowstraße/Lehrzentrum,8
+2023-01-01 00:00:00,Corneliastraße,0
+2023-01-01 00:00:00,Kleine Lenbachstraße,0
+2023-01-01 00:00:00,Bamlerstraße U-Bahn,6
+2023-01-01 00:00:00,Gußmannplatz,0
+2023-01-01 00:00:00,Ruhrbahn Essen,2
+2023-01-01 00:00:00,UDE / Sportcampus,3
+2023-01-01 00:00:00,Schützenbahn,10
+2023-01-01 00:00:00,UDE Leimkugelstrasse,5
+2023-01-01 00:00:00,Michaelstraße,1
+2023-01-01 00:00:00,Niederfeldsee,7
+2023-01-01 00:00:00,Mobilstation Kupferdreh,1
+2023-01-01 00:00:00,RUHRBAHN Betriebshof Econova-Allee 1-3 ,0
+2023-01-01 00:00:00,LIDL Steeler Straße ,0
+2023-01-01 00:00:00,LIDL Katzenbruchstraße,1
+2023-01-01 00:00:00,Allbau GmbH,8
+2023-01-01 00:30:00,Berliner Platz,8
+2023-01-01 00:30:00,Rathaus,10
+2023-01-01 00:30:00,Kopstadtplatz,4
+2023-01-01 00:30:00,Viehofer Str. 41,9
+2023-01-01 00:30:00,Philharmonie,7
+2023-01-01 00:30:00,Hirschlandplatz,6
+2023-01-01 00:30:00,Rüttenscheider Stern,4
+2023-01-01 00:30:00,Messe Ost/Gruga,3
+2023-01-01 00:30:00,Gemarkenplatz,2
+2023-01-01 00:30:00,Uniklinikum,1
+2023-01-01 00:30:00,Kettwig Brücke,8
+2023-01-01 00:30:00,Kettwig Bahnhof,5
+2023-01-01 00:30:00,Werden Bahnhof,12
+2023-01-01 00:30:00,Hügel / Regattahaus,4
+2023-01-01 00:30:00,Margarethenhöhe,4
+2023-01-01 00:30:00,Universitätsstr.,16
+2023-01-01 00:30:00,Mobilstation Steele,4
+2023-01-01 00:30:00,Essen Südbahnhof,2
+2023-01-01 00:30:00,Essen Hauptbahnhof Nordausgang,3
+2023-01-01 00:30:00,Helbingstraße / RVR / Emschergen.,0
+2023-01-01 00:30:00,Bredeney,8
+2023-01-01 00:30:00,Essen Hauptbahnhof Südausgang,1
+2023-01-01 00:30:00,Essen Westbahnhof,16
+2023-01-01 00:30:00,Stadtwaldplatz,4
+2023-01-01 00:30:00,Paulinenstr.,8
+2023-01-01 00:30:00,Grendplatz,8
+2023-01-01 00:30:00,Essen Borbeck Bahnhof,3
+2023-01-01 00:30:00,Breslauer Str.,2
+2023-01-01 00:30:00,Altenessen Bahnhof,8
+2023-01-01 00:30:00,Altenessen Mitte,8
+2023-01-01 00:30:00,Frohnhauser Platz,4
+2023-01-01 00:30:00,Gervinusstraße,5
+2023-01-01 00:30:00,Versorgungsamt,6
+2023-01-01 00:30:00,RVR,2
+2023-01-01 00:30:00,Karlsplatz,4
+2023-01-01 00:30:00,M1 - Tenderweg,3
+2023-01-01 00:30:00,Röntgenstr.,6
+2023-01-01 00:30:00,Universität,26
+2023-01-01 00:30:00,Vereinstr.,10
+2023-01-01 00:30:00,Mobilstation Parkfriedhof,6
+2023-01-01 00:30:00,Huttropstraße,0
+2023-01-01 00:30:00,Isenbergstr.,2
+2023-01-01 00:30:00,Martinstr.,0
+2023-01-01 00:30:00,Girardethaus,5
+2023-01-01 00:30:00,Mobilstation Florastraße,7
+2023-01-01 00:30:00,EVAG-Betriebshof Mitte,12
+2023-01-01 00:30:00,I. Dellbrügge / Kettwiger Str.,1
+2023-01-01 00:30:00,Ruhrallee,4
+2023-01-01 00:30:00,EVAG-Betriebshof Schweriner Str.,1
+2023-01-01 00:30:00,Klarastraße,2
+2023-01-01 00:30:00,Rüttenscheider Platz,3
+2023-01-01 00:30:00,Mobilstation Kronprinzenstrasse,0
+2023-01-01 00:30:00,Westviertel,13
+2023-01-01 00:30:00,Rheinischer Platz,5
+2023-01-01 00:30:00,Univiertel,6
+2023-01-01 00:30:00,Universität/AStA,19
+2023-01-01 00:30:00,Mobilstation Landgericht,0
+2023-01-01 00:30:00,Virchowstraße/Lehrzentrum,8
+2023-01-01 00:30:00,Corneliastraße,0
+2023-01-01 00:30:00,Kleine Lenbachstraße,0
+2023-01-01 00:30:00,Bamlerstraße U-Bahn,6
+2023-01-01 00:30:00,Gußmannplatz,0
+2023-01-01 00:30:00,Ruhrbahn Essen,2
+2023-01-01 00:30:00,UDE / Sportcampus,3
+2023-01-01 00:30:00,Schützenbahn,10
+2023-01-01 00:30:00,UDE Leimkugelstrasse,5
+2023-01-01 00:30:00,Michaelstraße,1
+2023-01-01 00:30:00,Niederfeldsee,7
+2023-01-01 00:30:00,Mobilstation Kupferdreh,1
+2023-01-01 00:30:00,RUHRBAHN Betriebshof Econova-Allee 1-3 ,0
+2023-01-01 00:30:00,LIDL Steeler Straße ,0
+2023-01-01 00:30:00,LIDL Katzenbruchstraße,1
+2023-01-01 00:30:00,Allbau GmbH,8
+2023-01-01 01:00:00,Berliner Platz,8
+2023-01-01 01:00:00,Rathaus,10
+2023-01-01 01:00:00,Kopstadtplatz,4
+2023-01-01 01:00:00,Viehofer Str. 41,9
+2023-01-01 01:00:00,Philharmonie,7
+2023-01-01 01:00:00,Hirschlandplatz,6
+2023-01-01 01:00:00,Rüttenscheider Stern,4
+2023-01-01 01:00:00,Messe Ost/Gruga,3
+2023-01-01 01:00:00,Gemarkenplatz,2
+2023-01-01 01:00:00,Uniklinikum,1
+2023-01-01 01:00:00,Kettwig Brücke,8
+2023-01-01 01:00:00,Kettwig Bahnhof,5
+2023-01-01 01:00:00,Werden Bahnhof,12
+2023-01-01 01:00:00,Hügel / Regattahaus,4
+2023-01-01 01:00:00,Margarethenhöhe,4
+2023-01-01 01:00:00,Universitätsstr.,16
+2023-01-01 01:00:00,Mobilstation Steele,4
+2023-01-01 01:00:00,Essen Südbahnhof,2
+2023-01-01 01:00:00,Essen Hauptbahnhof Nordausgang,3
+2023-01-01 01:00:00,Helbingstraße / RVR / Emschergen.,0
+2023-01-01 01:00:00,Bredeney,8
+2023-01-01 01:00:00,Essen Hauptbahnhof Südausgang,1
+2023-01-01 01:00:00,Essen Westbahnhof,16
+2023-01-01 01:00:00,Stadtwaldplatz,4
+2023-01-01 01:00:00,Paulinenstr.,8
+2023-01-01 01:00:00,Grendplatz,8
+2023-01-01 01:00:00,Essen Borbeck Bahnhof,3
+2023-01-01 01:00:00,Breslauer Str.,2
+2023-01-01 01:00:00,Altenessen Bahnhof,8
+2023-01-01 01:00:00,Altenessen Mitte,8
+2023-01-01 01:00:00,Frohnhauser Platz,4
+2023-01-01 01:00:00,Gervinusstraße,5
+2023-01-01 01:00:00,Versorgungsamt,6
+2023-01-01 01:00:00,RVR,2
+2023-01-01 01:00:00,Karlsplatz,4
+2023-01-01 01:00:00,M1 - Tenderweg,3
+2023-01-01 01:00:00,Röntgenstr.,6
+2023-01-01 01:00:00,Universität,26
+2023-01-01 01:00:00,Vereinstr.,9
+2023-01-01 01:00:00,Mobilstation Parkfriedhof,6
+2023-01-01 01:00:00,Huttropstraße,0
+2023-01-01 01:00:00,Isenbergstr.,2
+2023-01-01 01:00:00,Martinstr.,0
+2023-01-01 01:00:00,Girardethaus,5
+2023-01-01 01:00:00,Mobilstation Florastraße,7
+2023-01-01 01:00:00,EVAG-Betriebshof Mitte,12
+2023-01-01 01:00:00,I. Dellbrügge / Kettwiger Str.,1
+2023-01-01 01:00:00,Ruhrallee,4
+2023-01-01 01:00:00,EVAG-Betriebshof Schweriner Str.,1
+2023-01-01 01:00:00,Klarastraße,2
+2023-01-01 01:00:00,Rüttenscheider Platz,3
+2023-01-01 01:00:00,Mobilstation Kronprinzenstrasse,0
+2023-01-01 01:00:00,Westviertel,13
+2023-01-01 01:00:00,Rheinischer Platz,5
+2023-01-01 01:00:00,Univiertel,6
+2023-01-01 01:00:00,Universität/AStA,19
+2023-01-01 01:00:00,Mobilstation Landgericht,0
+2023-01-01 01:00:00,Virchowstraße/Lehrzentrum,8
+2023-01-01 01:00:00,Corneliastraße,0
+2023-01-01 01:00:00,Kleine Lenbachstraße,0
+2023-01-01 01:00:00,Bamlerstraße U-Bahn,6
+2023-01-01 01:00:00,Gußmannplatz,0
+2023-01-01 01:00:00,Ruhrbahn Essen,2
+2023-01-01 01:00:00,UDE / Sportcampus,3
+2023-01-01 01:00:00,Schützenbahn,10
+2023-01-01 01:00:00,UDE Leimkugelstrasse,5
+2023-01-01 01:00:00,Michaelstraße,1
+2023-01-01 01:00:00,Niederfeldsee,7
+2023-01-01 01:00:00,Mobilstation Kupferdreh,1
+2023-01-01 01:00:00,RUHRBAHN Betriebshof Econova-Allee 1-3 ,0
+2023-01-01 01:00:00,LIDL Steeler Straße ,0
+2023-01-01 01:00:00,LIDL Katzenbruchstraße,1
+2023-01-01 01:00:00,Allbau GmbH,8
+2023-01-01 01:30:00,Berliner Platz,8
+2023-01-01 01:30:00,Rathaus,10
+2023-01-01 01:30:00,Kopstadtplatz,4
+2023-01-01 01:30:00,Viehofer Str. 41,9
+2023-01-01 01:30:00,Philharmonie,7
+2023-01-01 01:30:00,Hirschlandplatz,6
+2023-01-01 01:30:00,Rüttenscheider Stern,4
+2023-01-01 01:30:00,Messe Ost/Gruga,3
+2023-01-01 01:30:00,Gemarkenplatz,2
+2023-01-01 01:30:00,Uniklinikum,1
+2023-01-01 01:30:00,Kettwig Brücke,8
+2023-01-01 01:30:00,Kettwig Bahnhof,5
+2023-01-01 01:30:00,Werden Bahnhof,12
+2023-01-01 01:30:00,Hügel / Regattahaus,4
+2023-01-01 01:30:00,Margarethenhöhe,4
+2023-01-01 01:30:00,Universitätsstr.,16
+2023-01-01 01:30:00,Mobilstation Steele,4
+2023-01-01 01:30:00,Essen Südbahnhof,2
+2023-01-01 01:30:00,Essen Hauptbahnhof Nordausgang,3
+2023-01-01 01:30:00,Helbingstraße / RVR / Emschergen.,0
+2023-01-01 01:30:00,Bredeney,8
+2023-01-01 01:30:00,Essen Hauptbahnhof Südausgang,1
+2023-01-01 01:30:00,Essen Westbahnhof,16
+2023-01-01 01:30:00,Stadtwaldplatz,4
+2023-01-01 01:30:00,Paulinenstr.,8
+2023-01-01 01:30:00,Grendplatz,8
+2023-01-01 01:30:00,Essen Borbeck Bahnhof,3
+2023-01-01 01:30:00,Breslauer Str.,2
+2023-01-01 01:30:00,Altenessen Bahnhof,8
+2023-01-01 01:30:00,Altenessen Mitte,8
+2023-01-01 01:30:00,Frohnhauser Platz,4
+2023-01-01 01:30:00,Gervinusstraße,5
+2023-01-01 01:30:00,Versorgungsamt,6
+2023-01-01 01:30:00,RVR,2
+2023-01-01 01:30:00,Karlsplatz,4
+2023-01-01 01:30:00,M1 - Tenderweg,3
+2023-01-01 01:30:00,Röntgenstr.,6
+2023-01-01 01:30:00,Universität,26
+2023-01-01 01:30:00,Vereinstr.,9
+2023-01-01 01:30:00,Mobilstation Parkfriedhof,6
+2023-01-01 01:30:00,Huttropstraße,0
+2023-01-01 01:30:00,Isenbergstr.,2
+2023-01-01 01:30:00,Martinstr.,0
+2023-01-01 01:30:00,Girardethaus,5
+2023-01-01 01:30:00,Mobilstation Florastraße,7
+2023-01-01 01:30:00,EVAG-Betriebshof Mitte,12
+2023-01-01 01:30:00,I. Dellbrügge / Kettwiger Str.,1
+2023-01-01 01:30:00,Ruhrallee,4
+2023-01-01 01:30:00,EVAG-Betriebshof Schweriner Str.,1
+2023-01-01 01:30:00,Klarastraße,2
+2023-01-01 01:30:00,Rüttenscheider Platz,3
+2023-01-01 01:30:00,Mobilstation Kronprinzenstrasse,0
+2023-01-01 01:30:00,Westviertel,13
+2023-01-01 01:30:00,Rheinischer Platz,5
+2023-01-01 01:30:00,Univiertel,6
+2023-01-01 01:30:00,Universität/AStA,20
+2023-01-01 01:30:00,Mobilstation Landgericht,0
+2023-01-01 01:30:00,Virchowstraße/Lehrzentrum,8
+2023-01-01 01:30:00,Corneliastraße,0
+2023-01-01 01:30:00,Kleine Lenbachstraße,0
+2023-01-01 01:30:00,Bamlerstraße U-Bahn,6
+2023-01-01 01:30:00,Gußmannplatz,0
+2023-01-01 01:30:00,Ruhrbahn Essen,2
+2023-01-01 01:30:00,UDE / Sportcampus,3
+2023-01-01 01:30:00,Schützenbahn,10
+2023-01-01 01:30:00,UDE Leimkugelstrasse,5
+2023-01-01 01:30:00,Michaelstraße,1
+2023-01-01 01:30:00,Niederfeldsee,7
+2023-01-01 01:30:00,Mobilstation Kupferdreh,1
+2023-01-01 01:30:00,RUHRBAHN Betriebshof Econova-Allee 1-3 ,0
+2023-01-01 01:30:00,LIDL Steeler Straße ,0
+2023-01-01 01:30:00,LIDL Katzenbruchstraße,1
+2023-01-01 01:30:00,Allbau GmbH,8
+2023-01-01 02:00:00,Berliner Platz,8
+2023-01-01 02:00:00,Rathaus,10
+2023-01-01 02:00:00,Kopstadtplatz,4
+2023-01-01 02:00:00,Viehofer Str. 41,8
+2023-01-01 02:00:00,Philharmonie,7
+2023-01-01 02:00:00,Hirschlandplatz,6
+2023-01-01 02:00:00,Rüttenscheider Stern,4
+2023-01-01 02:00:00,Messe Ost/Gruga,3
+2023-01-01 02:00:00,Gemarkenplatz,2
+2023-01-01 02:00:00,Uniklinikum,1
+2023-01-01 02:00:00,Kettwig Brücke,8
+2023-01-01 02:00:00,Kettwig Bahnhof,5
+2023-01-01 02:00:00,Werden Bahnhof,12
+2023-01-01 02:00:00,Hügel / Regattahaus,4
+2023-01-01 02:00:00,Margarethenhöhe,4
+2023-01-01 02:00:00,Universitätsstr.,16
+2023-01-01 02:00:00,Mobilstation Steele,4
+2023-01-01 02:00:00,Essen Südbahnhof,2
+2023-01-01 02:00:00,Essen Hauptbahnhof Nordausgang,4
+2023-01-01 02:00:00,Helbingstraße / RVR / Emschergen.,0
+2023-01-01 02:00:00,Bredeney,8
+2023-01-01 02:00:00,Essen Hauptbahnhof Südausgang,1
+2023-01-01 02:00:00,Essen Westbahnhof,16
+2023-01-01 02:00:00,Stadtwaldplatz,4
+2023-01-01 02:00:00,Paulinenstr.,8
+2023-01-01 02:00:00,Grendplatz,8
+2023-01-01 02:00:00,Essen Borbeck Bahnhof,3
+2023-01-01 02:00:00,Breslauer Str.,2
+2023-01-01 02:00:00,Altenessen Bahnhof,8
+2023-01-01 02:00:00,Altenessen Mitte,8
+2023-01-01 02:00:00,Frohnhauser Platz,4
+2023-01-01 02:00:00,Gervinusstraße,5
+2023-01-01 02:00:00,Versorgungsamt,6
+2023-01-01 02:00:00,RVR,2
+2023-01-01 02:00:00,Karlsplatz,4
+2023-01-01 02:00:00,M1 - Tenderweg,3
+2023-01-01 02:00:00,Röntgenstr.,6
+2023-01-01 02:00:00,Universität,27
+2023-01-01 02:00:00,Vereinstr.,9
+2023-01-01 02:00:00,Mobilstation Parkfriedhof,6
+2023-01-01 02:00:00,Huttropstraße,0
+2023-01-01 02:00:00,Isenbergstr.,2
+2023-01-01 02:00:00,Martinstr.,0
+2023-01-01 02:00:00,Girardethaus,5
+2023-01-01 02:00:00,Mobilstation Florastraße,7
+2023-01-01 02:00:00,EVAG-Betriebshof Mitte,12
+2023-01-01 02:00:00,I. Dellbrügge / Kettwiger Str.,1
+2023-01-01 02:00:00,Ruhrallee,4
+2023-01-01 02:00:00,EVAG-Betriebshof Schweriner Str.,1
+2023-01-01 02:00:00,Klarastraße,2
+2023-01-01 02:00:00,Rüttenscheider Platz,2
+2023-01-01 02:00:00,Mobilstation Kronprinzenstrasse,0
+2023-01-01 02:00:00,Westviertel,13
+2023-01-01 02:00:00,Rheinischer Platz,5
+2023-01-01 02:00:00,Univiertel,6
+2023-01-01 02:00:00,Universität/AStA,19
+2023-01-01 02:00:00,Mobilstation Landgericht,0
+2023-01-01 02:00:00,Virchowstraße/Lehrzentrum,8
+2023-01-01 02:00:00,Corneliastraße,1
+2023-01-01 02:00:00,Kleine Lenbachstraße,0
+2023-01-01 02:00:00,Bamlerstraße U-Bahn,6
+2023-01-01 02:00:00,Gußmannplatz,0
+2023-01-01 02:00:00,Ruhrbahn Essen,2
+2023-01-01 02:00:00,UDE / Sportcampus,3
+2023-01-01 02:00:00,Schützenbahn,10
+2023-01-01 02:00:00,UDE Leimkugelstrasse,5
+2023-01-01 02:00:00,Michaelstraße,1
+2023-01-01 02:00:00,Niederfeldsee,7
+2023-01-01 02:00:00,Mobilstation Kupferdreh,1
+2023-01-01 02:00:00,RUHRBAHN Betriebshof Econova-Allee 1-3 ,0
+2023-01-01 02:00:00,LIDL Steeler Straße ,0
+2023-01-01 02:00:00,LIDL Katzenbruchstraße,1
+2023-01-01 02:00:00,Allbau GmbH,8
+2023-01-01 02:30:00,Berliner Platz,8
+2023-01-01 02:30:00,Rathaus,10
+2023-01-01 02:30:00,Kopstadtplatz,4
+2023-01-01 02:30:00,Viehofer Str. 41,10
+2023-01-01 02:30:00,Philharmonie,7
+2023-01-01 02:30:00,Hirschlandplatz,6
+2023-01-01 02:30:00,Rüttenscheider Stern,3
+2023-01-01 02:30:00,Messe Ost/Gruga,3
+2023-01-01 02:30:00,Gemarkenplatz,5
+2023-01-01 02:30:00,Uniklinikum,1
+2023-01-01 02:30:00,Kettwig Brücke,8
+2023-01-01 02:30:00,Kettwig Bahnhof,5
+2023-01-01 02:30:00,Werden Bahnhof,12
+2023-01-01 02:30:00,Hügel / Regattahaus,4
+2023-01-01 02:30:00,Margarethenhöhe,4
+2023-01-01 02:30:00,Universitätsstr.,16
+2023-01-01 02:30:00,Mobilstation Steele,4
+2023-01-01 02:30:00,Essen Südbahnhof,2
+2023-01-01 02:30:00,Essen Hauptbahnhof Nordausgang,1
+2023-01-01 02:30:00,Helbingstraße / RVR / Emschergen.,0
+2023-01-01 02:30:00,Bredeney,8
+2023-01-01 02:30:00,Essen Hauptbahnhof Südausgang,1
+2023-01-01 02:30:00,Essen Westbahnhof,16
+2023-01-01 02:30:00,Stadtwaldplatz,4
+2023-01-01 02:30:00,Paulinenstr.,8
+2023-01-01 02:30:00,Grendplatz,8
+2023-01-01 02:30:00,Essen Borbeck Bahnhof,3
+2023-01-01 02:30:00,Breslauer Str.,2
+2023-01-01 02:30:00,Altenessen Bahnhof,8
+2023-01-01 02:30:00,Altenessen Mitte,8
+2023-01-01 02:30:00,Frohnhauser Platz,4
+2023-01-01 02:30:00,Gervinusstraße,5
+2023-01-01 02:30:00,Versorgungsamt,6
+2023-01-01 02:30:00,RVR,2
+2023-01-01 02:30:00,Karlsplatz,4
+2023-01-01 02:30:00,M1 - Tenderweg,3
+2023-01-01 02:30:00,Röntgenstr.,6
+2023-01-01 02:30:00,Universität,27
+2023-01-01 02:30:00,Vereinstr.,9
+2023-01-01 02:30:00,Mobilstation Parkfriedhof,6
+2023-01-01 02:30:00,Huttropstraße,0
+2023-01-01 02:30:00,Isenbergstr.,2
+2023-01-01 02:30:00,Martinstr.,0
+2023-01-01 02:30:00,Girardethaus,5
+2023-01-01 02:30:00,Mobilstation Florastraße,7
+2023-01-01 02:30:00,EVAG-Betriebshof Mitte,12
+2023-01-01 02:30:00,I. Dellbrügge / Kettwiger Str.,1
+2023-01-01 02:30:00,Ruhrallee,4
+2023-01-01 02:30:00,EVAG-Betriebshof Schweriner Str.,1
+2023-01-01 02:30:00,Klarastraße,2
+2023-01-01 02:30:00,Rüttenscheider Platz,2
+2023-01-01 02:30:00,Mobilstation Kronprinzenstrasse,0
+2023-01-01 02:30:00,Westviertel,13
+2023-01-01 02:30:00,Rheinischer Platz,5
+2023-01-01 02:30:00,Univiertel,6
+2023-01-01 02:30:00,Universität/AStA,19
+2023-01-01 02:30:00,Mobilstation Landgericht,0
+2023-01-01 02:30:00,Virchowstraße/Lehrzentrum,8
+2023-01-01 02:30:00,Corneliastraße,1
+2023-01-01 02:30:00,Kleine Lenbachstraße,0
+2023-01-01 02:30:00,Bamlerstraße U-Bahn,6
+2023-01-01 02:30:00,Gußmannplatz,1
+2023-01-01 02:30:00,Ruhrbahn Essen,2
+2023-01-01 02:30:00,UDE / Sportcampus,3
+2023-01-01 02:30:00,Schützenbahn,10
+2023-01-01 02:30:00,UDE Leimkugelstrasse,5
+2023-01-01 02:30:00,Michaelstraße,1
+2023-01-01 02:30:00,Niederfeldsee,7
+2023-01-01 02:30:00,Mobilstation Kupferdreh,1
+2023-01-01 02:30:00,RUHRBAHN Betriebshof Econova-Allee 1-3 ,0
+2023-01-01 02:30:00,LIDL Steeler Straße ,0
+2023-01-01 02:30:00,LIDL Katzenbruchstraße,1
+2023-01-01 02:30:00,Allbau GmbH,7
+2023-01-01 03:00:00,Berliner Platz,8
+2023-01-01 03:00:00,Rathaus,10
+2023-01-01 03:00:00,Kopstadtplatz,4
+2023-01-01 03:00:00,Viehofer Str. 41,10
+2023-01-01 03:00:00,Philharmonie,7
+2023-01-01 03:00:00,Hirschlandplatz,5
+2023-01-01 03:00:00,Rüttenscheider Stern,3
+2023-01-01 03:00:00,Messe Ost/Gruga,3
+2023-01-01 03:00:00,Gemarkenplatz,5
+2023-01-01 03:00:00,Uniklinikum,1
+2023-01-01 03:00:00,Kettwig Brücke,8
+2023-01-01 03:00:00,Kettwig Bahnhof,5
+2023-01-01 03:00:00,Werden Bahnhof,12
+2023-01-01 03:00:00,Hügel / Regattahaus,4
+2023-01-01 03:00:00,Margarethenhöhe,4
+2023-01-01 03:00:00,Universitätsstr.,16
+2023-01-01 03:00:00,Mobilstation Steele,4
+2023-01-01 03:00:00,Essen Südbahnhof,2
+2023-01-01 03:00:00,Essen Hauptbahnhof Nordausgang,0
+2023-01-01 03:00:00,Helbingstraße / RVR / Emschergen.,0
+2023-01-01 03:00:00,Bredeney,8
+2023-01-01 03:00:00,Essen Hauptbahnhof Südausgang,1
+2023-01-01 03:00:00,Essen Westbahnhof,16
+2023-01-01 03:00:00,Stadtwaldplatz,4
+2023-01-01 03:00:00,Paulinenstr.,8
+2023-01-01 03:00:00,Grendplatz,8
+2023-01-01 03:00:00,Essen Borbeck Bahnhof,3
+2023-01-01 03:00:00,Breslauer Str.,2
+2023-01-01 03:00:00,Altenessen Bahnhof,8
+2023-01-01 03:00:00,Altenessen Mitte,8
+2023-01-01 03:00:00,Frohnhauser Platz,3
+2023-01-01 03:00:00,Gervinusstraße,5
+2023-01-01 03:00:00,Versorgungsamt,6
+2023-01-01 03:00:00,RVR,2
+2023-01-01 03:00:00,Karlsplatz,4
+2023-01-01 03:00:00,M1 - Tenderweg,3
+2023-01-01 03:00:00,Röntgenstr.,6
+2023-01-01 03:00:00,Universität,28
+2023-01-01 03:00:00,Vereinstr.,9
+2023-01-01 03:00:00,Mobilstation Parkfriedhof,6
+2023-01-01 03:00:00,Huttropstraße,0
+2023-01-01 03:00:00,Isenbergstr.,2
+2023-01-01 03:00:00,Martinstr.,0
+2023-01-01 03:00:00,Girardethaus,4
+2023-01-01 03:00:00,Mobilstation Florastraße,7
+2023-01-01 03:00:00,EVAG-Betriebshof Mitte,12
+2023-01-01 03:00:00,I. Dellbrügge / Kettwiger Str.,1
+2023-01-01 03:00:00,Ruhrallee,5
+2023-01-01 03:00:00,EVAG-Betriebshof Schweriner Str.,1
+2023-01-01 03:00:00,Klarastraße,2
+2023-01-01 03:00:00,Rüttenscheider Platz,2
+2023-01-01 03:00:00,Mobilstation Kronprinzenstrasse,0
+2023-01-01 03:00:00,Westviertel,13
+2023-01-01 03:00:00,Rheinischer Platz,5
+2023-01-01 03:00:00,Univiertel,6
+2023-01-01 03:00:00,Universität/AStA,19
+2023-01-01 03:00:00,Mobilstation Landgericht,0
+2023-01-01 03:00:00,Virchowstraße/Lehrzentrum,8
+2023-01-01 03:00:00,Corneliastraße,1
+2023-01-01 03:00:00,Kleine Lenbachstraße,0
+2023-01-01 03:00:00,Bamlerstraße U-Bahn,6
+2023-01-01 03:00:00,Gußmannplatz,1
+2023-01-01 03:00:00,Ruhrbahn Essen,2
+2023-01-01 03:00:00,UDE / Sportcampus,3
+2023-01-01 03:00:00,Schützenbahn,11
+2023-01-01 03:00:00,UDE Leimkugelstrasse,5
+2023-01-01 03:00:00,Michaelstraße,1
+2023-01-01 03:00:00,Niederfeldsee,7
+2023-01-01 03:00:00,Mobilstation Kupferdreh,1
+2023-01-01 03:00:00,RUHRBAHN Betriebshof Econova-Allee 1-3 ,0
+2023-01-01 03:00:00,LIDL Steeler Straße ,0
+2023-01-01 03:00:00,LIDL Katzenbruchstraße,1
+2023-01-01 03:00:00,Allbau GmbH,7
+2023-01-01 03:30:00,Berliner Platz,8
+2023-01-01 03:30:00,Rathaus,11
+2023-01-01 03:30:00,Kopstadtplatz,4
+2023-01-01 03:30:00,Viehofer Str. 41,10
+2023-01-01 03:30:00,Philharmonie,7
+2023-01-01 03:30:00,Hirschlandplatz,3
+2023-01-01 03:30:00,Rüttenscheider Stern,4
+2023-01-01 03:30:00,Messe Ost/Gruga,3
+2023-01-01 03:30:00,Gemarkenplatz,5
+2023-01-01 03:30:00,Uniklinikum,1
+2023-01-01 03:30:00,Kettwig Brücke,8
+2023-01-01 03:30:00,Kettwig Bahnhof,5
+2023-01-01 03:30:00,Werden Bahnhof,12
+2023-01-01 03:30:00,Hügel / Regattahaus,4
+2023-01-01 03:30:00,Margarethenhöhe,4
+2023-01-01 03:30:00,Universitätsstr.,16
+2023-01-01 03:30:00,Mobilstation Steele,4
+2023-01-01 03:30:00,Essen Südbahnhof,2
+2023-01-01 03:30:00,Essen Hauptbahnhof Nordausgang,0
+2023-01-01 03:30:00,Helbingstraße / RVR / Emschergen.,0
+2023-01-01 03:30:00,Bredeney,8
+2023-01-01 03:30:00,Essen Hauptbahnhof Südausgang,0
+2023-01-01 03:30:00,Essen Westbahnhof,16
+2023-01-01 03:30:00,Stadtwaldplatz,4
+2023-01-01 03:30:00,Paulinenstr.,8
+2023-01-01 03:30:00,Grendplatz,8
+2023-01-01 03:30:00,Essen Borbeck Bahnhof,2
+2023-01-01 03:30:00,Breslauer Str.,2
+2023-01-01 03:30:00,Altenessen Bahnhof,8
+2023-01-01 03:30:00,Altenessen Mitte,8
+2023-01-01 03:30:00,Frohnhauser Platz,3
+2023-01-01 03:30:00,Gervinusstraße,5
+2023-01-01 03:30:00,Versorgungsamt,6
+2023-01-01 03:30:00,RVR,2
+2023-01-01 03:30:00,Karlsplatz,4
+2023-01-01 03:30:00,M1 - Tenderweg,3
+2023-01-01 03:30:00,Röntgenstr.,6
+2023-01-01 03:30:00,Universität,28
+2023-01-01 03:30:00,Vereinstr.,9
+2023-01-01 03:30:00,Mobilstation Parkfriedhof,6
+2023-01-01 03:30:00,Huttropstraße,0
+2023-01-01 03:30:00,Isenbergstr.,2
+2023-01-01 03:30:00,Martinstr.,0
+2023-01-01 03:30:00,Girardethaus,4
+2023-01-01 03:30:00,Mobilstation Florastraße,7
+2023-01-01 03:30:00,EVAG-Betriebshof Mitte,12
+2023-01-01 03:30:00,I. Dellbrügge / Kettwiger Str.,2
+2023-01-01 03:30:00,Ruhrallee,5
+2023-01-01 03:30:00,EVAG-Betriebshof Schweriner Str.,1
+2023-01-01 03:30:00,Klarastraße,2
+2023-01-01 03:30:00,Rüttenscheider Platz,2
+2023-01-01 03:30:00,Mobilstation Kronprinzenstrasse,0
+2023-01-01 03:30:00,Westviertel,13
+2023-01-01 03:30:00,Rheinischer Platz,5
+2023-01-01 03:30:00,Univiertel,6
+2023-01-01 03:30:00,Universität/AStA,17
+2023-01-01 03:30:00,Mobilstation Landgericht,0
+2023-01-01 03:30:00,Virchowstraße/Lehrzentrum,8
+2023-01-01 03:30:00,Corneliastraße,1
+2023-01-01 03:30:00,Kleine Lenbachstraße,0
+2023-01-01 03:30:00,Bamlerstraße U-Bahn,6
+2023-01-01 03:30:00,Gußmannplatz,1
+2023-01-01 03:30:00,Ruhrbahn Essen,2
+2023-01-01 03:30:00,UDE / Sportcampus,4
+2023-01-01 03:30:00,Schützenbahn,11
+2023-01-01 03:30:00,UDE Leimkugelstrasse,5
+2023-01-01 03:30:00,Michaelstraße,1
+2023-01-01 03:30:00,Niederfeldsee,7
+2023-01-01 03:30:00,Mobilstation Kupferdreh,1
+2023-01-01 03:30:00,RUHRBAHN Betriebshof Econova-Allee 1-3 ,0
+2023-01-01 03:30:00,LIDL Steeler Straße ,0
+2023-01-01 03:30:00,LIDL Katzenbruchstraße,1
+2023-01-01 03:30:00,Allbau GmbH,7
