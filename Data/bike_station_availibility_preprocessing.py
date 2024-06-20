@@ -5,7 +5,6 @@ import gzip
 from collections import defaultdict
 
 
-
 def extract_timestamp_from_filename(filename):
     base_name = os.path.basename(filename)
     # Filename format: nextbike_YYYYMMDD_HHMM.json.gz
@@ -16,7 +15,7 @@ def extract_timestamp_from_filename(filename):
 
 if __name__ == '__main__':
     # Directory containing the JSON.GZ files
-    directory_path = 'nb23/test/'
+    directory_path = 'nb23/nextbike/'
 
     # List to hold the data
     data_records = []
@@ -28,7 +27,6 @@ if __name__ == '__main__':
 
         with gzip.open(gz_file_path, 'rt', encoding='utf-8') as json_file:
             # Read the JSON content
-
             data = pd.read_json(json_file)
 
             # Get the data for Essen
@@ -37,13 +35,15 @@ if __name__ == '__main__':
                     if city['name'] == 'Essen':
                         for place in city['places']:
                             station_name = place['name']
-                            if station_name.startswith('BIKE'):
+                            if station_name.startswith('BIKE') or station_name != 'Berliner Platz':
                                 continue
                             available_bikes = place['bikes_available_to_rent']
-                            data_records.append([timestamp, station_name, available_bikes])
+                            lat = place['lat']
+                            lng = place['lng']
+                            data_records.append([timestamp, station_name, available_bikes, lat, lng])
 
     # Convert the list of records into a DataFrame
-    df_bike_availability = pd.DataFrame(data_records, columns=['time', 'station_name', 'bikes_available'])
+    df_bike_availability = pd.DataFrame(data_records, columns=['datetime', 'station_name', 'bikes_available', 'lon', 'lat'])
 
-    # Save the DataFrame to a CSV file
+    # Save the DataFrame to a CSV filex
     df_bike_availability.to_csv('bike_availability_essen.csv', index=False)

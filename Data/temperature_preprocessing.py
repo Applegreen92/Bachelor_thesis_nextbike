@@ -3,18 +3,20 @@ import numpy as np
 import pandas as pd
 
 # Open the NetCDF file
-dataset = nc.Dataset('weather/tas_1hr_HOSTRADA-v1-0_BE_gn_2023010100-2023013123.nc')
+dataset = nc.Dataset('weather/temperature_apr.nc')
 
 # Print basic information about the dataset
 print(dataset)
 
 # Access the variables
+
+# lon and lat are both 2D arrays of (928,720), this is becauce we have 720 spatial information about
+# lat at 928 given moments in time. This is why I have to flatten it.
 lon = dataset.variables['lon'][:]
 lat = dataset.variables['lat'][:]
 time = dataset.variables['time'][:]
 temperature = dataset.variables['tas'][:]
-
-print(time)
+print(np.shape(lon))
 
 # Convert time to a readable format if needed
 units = dataset.variables['time'].units
@@ -22,7 +24,9 @@ time_converted = nc.num2date(time, units)
 
 # Flatten the spatial coordinates and repeat them for each time step
 lon_flat = lon.flatten()
+print(np.shape(lon_flat))
 lat_flat = lat.flatten()
+print(np.shape(lat_flat))
 num_time_steps = temperature.shape[0]
 
 lon_repeated = np.tile(lon_flat, num_time_steps)
