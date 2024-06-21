@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 
 # Load the CSV file containing bike availability and station information
-csv_file_path = 'weather/bike_availability_essen_Berliner_Platz.csv'
+csv_file_path = 'preprocessed_data/bike_availability_essen_Berliner_Platz.csv'
 csv_df = pd.read_csv(csv_file_path)
 
 # Convert 'datetime' column to datetime objects
@@ -44,12 +44,16 @@ def find_nearest_2d_with_mask(lon_array, lat_array, lon, lat, mask):
 
     return lat_idx, lon_idx
 
-def get_temperature_from_nc(file_path, lon, lat, datetime_obj):
+def get_temperature_for_month(dataset, lon_array, lat_array, tas_array, valid_mask, lon, lat, datetime_obj):
     """
-    Retrieve temperature from a NetCDF file for the nearest valid coordinates and time.
+    Retrieve temperature from a NetCDF dataset for the nearest valid coordinates and time.
 
     Parameters:
-    file_path (str): Path to the NetCDF file.
+    dataset (netCDF4.Dataset): Opened NetCDF dataset.
+    lon_array (numpy array): Array of longitudes.
+    lat_array (numpy array): Array of latitudes.
+    tas_array (numpy array): Array of temperatures.
+    valid_mask (numpy array): Mask of valid data points.
     lon (float): Longitude of the desired location.
     lat (float): Latitude of the desired location.
     datetime_obj (datetime): Datetime object representing the desired time.
@@ -57,24 +61,6 @@ def get_temperature_from_nc(file_path, lon, lat, datetime_obj):
     Returns:
     float: Temperature at the nearest valid coordinates and time.
     """
-    # Open the NetCDF file
-    dataset = nc.Dataset(file_path)
-
-    # Extract longitude, latitude, and time arrays from the dataset
-    lon_array = dataset.variables['lon'][:]
-    lat_array = dataset.variables['lat'][:]
-
-    # Extract temperature array and create a mask for valid data points
-    tas_array = dataset.variables['tas'][:]
-    valid_mask = ~np.isnan(tas_array).all(axis=0)
-
-    # Debugging statements to check the shapes and contents
-    print(f"Longitude array shape: {lon_array.shape}")
-    print(f"Latitude array shape: {lat_array.shape}")
-    print(f"Temperature array shape: {tas_array.shape}")
-    print(f"Valid mask shape: {valid_mask.shape}")
-    print(f"Valid mask sample: {valid_mask}")
-
     # Find the nearest valid indexes for the given longitude and latitude
     lat_idx, lon_idx = find_nearest_2d_with_mask(lon_array, lat_array, lon, lat, valid_mask)
     print(f"Nearest indices - lat_idx: {lat_idx}, lon_idx: {lon_idx}")
@@ -86,27 +72,40 @@ def get_temperature_from_nc(file_path, lon, lat, datetime_obj):
     print(f"Time index: {time_idx}")
 
     # Extract the temperature at the nearest coordinates and time index
-    temperature = dataset.variables['tas'][time_idx, lat_idx, lon_idx]
+    temperature = tas_array[time_idx, lat_idx, lon_idx]
     print(f"Extracted temperature: {temperature}")
-
-    # Close the NetCDF dataset
-    dataset.close()
 
     return temperature
 
 # Define the path template and months for the NetCDF files
 months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
-file_path_template = 'temperature_{}.nc'
+file_path_template = 'weather/temperature_{}.nc'
+
+# Pre-load NetCDF datasets into a dictionary
+datasets = {month: nc.Dataset(file_path_template.format(month)) for month in months}
 
 # Add temperature data to the CSV DataFrame
 temperatures = []
 
+# Load variables for the current month
+current_month = None
+lon_array, lat_array, tas_array, valid_mask = None, None, None, None
+
 for index, row in csv_df.iterrows():
     month = row['datetime'].strftime('%b').lower()  # Extract the month
-    file_path = file_path_template.format(month)  # Determine the correct NetCDF file
+
+    if month != current_month:
+        # Update the current month and load new variables
+        current_month = month
+        dataset = datasets[current_month]
+        lon_array = dataset.variables['lon'][:]
+        lat_array = dataset.variables['lat'][:]
+        tas_array = dataset.variables['tas'][:]
+        valid_mask = ~np.isnan(tas_array).all(axis=0)
+
     try:
         print(f"Processing row {index}: {row['datetime']}, {row['lon']}, {row['lat']}")
-        temperature = get_temperature_from_nc(file_path, row['lon'], row['lat'], row['datetime'])  # Get the temperature
+        temperature = get_temperature_for_month(dataset, lon_array, lat_array, tas_array, valid_mask, row['lon'], row['lat'], row['datetime'])  # Get the temperature
         temperatures.append(temperature)  # Store the temperature
     except IndexError as e:
         print(f"IndexError at row {index}: {e}")
@@ -118,6 +117,10 @@ csv_df['temperature'] = temperatures
 # Save the updated DataFrame with temperature data to a new CSV file
 output_file_path = 'bike_availability_with_temperature.csv'
 csv_df.to_csv(output_file_path, index=False)
+
+# Close all opened NetCDF datasets
+for dataset in datasets.values():
+    dataset.close()
 
 # Display the first few rows of the updated DataFrame
 print(csv_df.head())
