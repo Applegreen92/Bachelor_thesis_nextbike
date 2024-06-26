@@ -1,9 +1,11 @@
+import time
+
 import netCDF4 as nc
 import numpy as np
 import pandas as pd
 
 # Load the CSV file containing bike availability and station information
-csv_file_path = 'preprocessed_data/bike_availability_essen_Berliner_Platz.csv'
+csv_file_path = 'preprocessed_data/Checked_preprocessed_data/Berliner_Platz/bike_availability_essen_Berliner_Platz.csv'
 csv_df = pd.read_csv(csv_file_path)
 
 # Convert 'datetime' column to datetime objects
@@ -76,6 +78,7 @@ def get_temperature_for_month(dataset, lon_array, lat_array, tas_array, valid_ma
     print(f"Extracted temperature: {temperature}")
 
     return temperature
+start_time = time.time()
 
 # Define the path template and months for the NetCDF files
 months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
@@ -115,12 +118,15 @@ for index, row in csv_df.iterrows():
 csv_df['temperature'] = temperatures
 
 # Save the updated DataFrame with temperature data to a new CSV file
-output_file_path = 'bike_availability_with_temperature.csv'
+output_file_path = 'preprocessed_data/bike_availability_germany.csv'
 csv_df.to_csv(output_file_path, index=False)
 
 # Close all opened NetCDF datasets
 for dataset in datasets.values():
     dataset.close()
 
+end_time = time.time()
+final_time = start_time - end_time
+print(f'{final_time} seconds for completion')
 # Display the first few rows of the updated DataFrame
 print(csv_df.head())
