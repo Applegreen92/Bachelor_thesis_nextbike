@@ -72,7 +72,7 @@ def get_temperature_for_month(dataset, lon_array, lat_array, tas_array, valid_ma
     time_calendar = dataset.variables['time'].calendar
     time_idx = nc.date2index(datetime_obj, dataset.variables['time'], select='nearest')
     print(f"Time index: {time_idx}")
-
+    print(time_idx, lat_idx, lon_idx)
     # Extract the temperature at the nearest coordinates and time index
     temperature = tas_array[time_idx, lat_idx, lon_idx]
     print(f"Extracted temperature: {temperature}")
@@ -82,7 +82,7 @@ start_time = time.time()
 
 # Define the path template and months for the NetCDF files
 months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
-file_path_template = 'weather/temperature_{}.nc'
+file_path_template = 'weather/temperature/temperature_{}.nc'
 
 # Pre-load NetCDF datasets into a dictionary
 datasets = {month: nc.Dataset(file_path_template.format(month)) for month in months}
