@@ -96,7 +96,7 @@ with ThreadPoolExecutor(max_workers=12) as executor:
 final_df = pd.concat(results)
 
 # Save the updated DataFrame with temperature data to a new CSV file
-output_file_path = 'preprocessed_data/essen_temp_cloud.csv'
+output_file_path = 'preprocessed_data/Checked_preprocessed_data/Essen/essen_temp_cloud.csv'
 final_df.to_csv(output_file_path, index=False)
 
 # Close all opened NetCDF datasets

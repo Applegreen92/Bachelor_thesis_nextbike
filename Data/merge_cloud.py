@@ -1,11 +1,13 @@
+import os
 import time
 
 import netCDF4 as nc
 import numpy as np
 import pandas as pd
 
+start_time = time.time()
 # Load the CSV file containing bike availability and station information
-csv_file_path = 'preprocessed_data/Checked_preprocessed_data/Berliner_Platz/bike_availability_essen_Berliner_Platz.csv'
+csv_file_path = 'preprocessed_data/Checked_preprocessed_data/Essen/bike_availability_essen.csv'
 csv_df = pd.read_csv(csv_file_path)
 
 # Convert 'datetime' column to datetime objects
@@ -78,13 +80,13 @@ def get_temperature_for_month(dataset, lon_array, lat_array, tas_array, valid_ma
     print(f"Extracted temperature: {cloudcover}")
 
     return cloudcover
-start_time = time.time()
+
 
 # Define the path template and months for the NetCDF files
 months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
 file_path_template = 'weather/Cloudcover/cloudcover_{}.nc'
 
-# Pre-load NetCDF datasets into a dictionary
+# Preload NetCDF datasets into a dictionary
 datasets = {month: nc.Dataset(file_path_template.format(month)) for month in months}
 
 # Add temperature data to the CSV DataFrame
@@ -118,7 +120,11 @@ for index, row in csv_df.iterrows():
 csv_df['cloud_cover'] = temperatures
 
 # Save the updated DataFrame with temperature data to a new CSV file
-output_file_path = 'preprocessed_data/bike_availability_germany.csv'
+base_name = os.path.basename(csv_file_path)
+name, ext = os.path.split(base_name)
+new_base_name = f"{name}_cloud{ext}"
+output_path = 'preprocessed_data/'
+output_file_path = os.path.join(output_path, new_base_name)
 csv_df.to_csv(output_file_path, index=False)
 
 # Close all opened NetCDF datasets
@@ -126,7 +132,7 @@ for dataset in datasets.values():
     dataset.close()
 
 end_time = time.time()
-final_time = start_time - end_time
+final_time = end_time - start_time
 print(f'{final_time} seconds for completion')
 # Display the first few rows of the updated DataFrame
 print(csv_df.head())

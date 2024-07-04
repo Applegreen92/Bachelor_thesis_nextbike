@@ -1,3 +1,4 @@
+import os
 import time
 
 import netCDF4 as nc
@@ -5,7 +6,7 @@ import numpy as np
 import pandas as pd
 
 # Load the CSV file containing bike availability and station information
-csv_file_path = 'preprocessed_data/Checked_preprocessed_data/Berliner_Platz/bike_availability_essen_Berliner_Platz.csv'
+csv_file_path = 'preprocessed_data/Checked_preprocessed_data/Essen/bike_availability_essen.csv'
 csv_df = pd.read_csv(csv_file_path)
 
 # Convert 'datetime' column to datetime objects
@@ -118,7 +119,11 @@ for index, row in csv_df.iterrows():
 csv_df['temperature'] = temperatures
 
 # Save the updated DataFrame with temperature data to a new CSV file
-output_file_path = 'preprocessed_data/bike_availability_germany.csv'
+base_name = os.path.basename(csv_file_path)
+name, ext = os.path.split(base_name)
+new_base_name = f"{name}_temp{ext}"
+output_path = 'preprocessed_data/'
+output_file_path = os.path.join(output_path, new_base_name)
 csv_df.to_csv(output_file_path, index=False)
 
 # Close all opened NetCDF datasets
