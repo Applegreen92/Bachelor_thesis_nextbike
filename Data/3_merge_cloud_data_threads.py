@@ -1,3 +1,4 @@
+import os
 import threading
 import time
 
@@ -7,8 +8,7 @@ import pandas as pd
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Load the CSV file containing bike availability and station information
-csv_file_path = ('preprocessed_data/Checked_preprocessed_data/Essen'
-                 '/bike_availability_with_temperature_Essen.csv')
+csv_file_path = 'preprocessed_data/temp_bike_availability_essen.csv'
 csv_df = pd.read_csv(csv_file_path)
 
 
@@ -96,7 +96,10 @@ with ThreadPoolExecutor(max_workers=12) as executor:
 final_df = pd.concat(results)
 
 # Save the updated DataFrame with temperature data to a new CSV file
-output_file_path = 'preprocessed_data/Checked_preprocessed_data/Essen/essen_temp_cloud.csv'
+base_name = os.path.basename(csv_file_path)
+new_base_name = f"cloudCover_{base_name}"
+output_path = 'preprocessed_data/'
+output_file_path = os.path.join(output_path, new_base_name)
 final_df.to_csv(output_file_path, index=False)
 
 # Close all opened NetCDF datasets

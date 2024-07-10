@@ -122,7 +122,7 @@ csv_df['cloud_cover'] = temperatures
 # Save the updated DataFrame with temperature data to a new CSV file
 base_name = os.path.basename(csv_file_path)
 name, ext = os.path.split(base_name)
-new_base_name = f"{name}_cloud{ext}"
+new_base_name = f"{name}cloud_{ext}"
 output_path = 'preprocessed_data/'
 output_file_path = os.path.join(output_path, new_base_name)
 csv_df.to_csv(output_file_path, index=False)

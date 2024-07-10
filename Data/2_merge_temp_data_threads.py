@@ -1,3 +1,4 @@
+import os
 import threading
 import time
 
@@ -93,7 +94,10 @@ with ThreadPoolExecutor(max_workers=12) as executor:
 final_df = pd.concat(results)
 
 # Save the updated DataFrame with temperature data to a new CSV file
-output_file_path = 'preprocessed_data/Checked_preprocessed_data/Germany/bike_availability_temperature_germany.csv'
+base_name = os.path.basename(csv_file_path)
+new_base_name = f"temp_{base_name}"
+output_path = 'preprocessed_data/'
+output_file_path = os.path.join(output_path, new_base_name)
 final_df.to_csv(output_file_path, index=False)
 
 # Close all opened NetCDF datasets
