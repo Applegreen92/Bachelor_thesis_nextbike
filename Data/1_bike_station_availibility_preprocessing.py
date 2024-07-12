@@ -35,20 +35,21 @@ if __name__ == '__main__':
             for country in data['countries']:
                 if country['country_name'] == 'Germany':
                     for city in country['cities']:
-                        if city['name'] in ['Essen', 'Berlin', 'Frankfurt', 'Dresden', 'Hannover']:
+                        if city['name'] in ['Essen']:
                             for place in city['places']:
                                 station_name = place['name']
                                 if station_name.startswith('BIKE'):
                                     continue
                                 available_bikes = place['bikes_available_to_rent']
+                                booked_bikes = place['booked_bikes']
                                 lat = place['lat']
                                 lng = place['lng']
-                                data_records.append([timestamp, station_name, available_bikes, lat, lng])
-                                print(f"Added data: {[timestamp, station_name, available_bikes, lat, lng]}")
+                                data_records.append([timestamp, station_name, available_bikes, booked_bikes, lat, lng])
+                                print(f"Added data: {[timestamp, station_name, available_bikes, booked_bikes, lat, lng]}")
 
     # Convert the list of records into a DataFrame
     df_bike_availability = pd.DataFrame(data_records,
-                                        columns=['datetime', 'station_name', 'bikes_available', 'lon', 'lat'])
+                                        columns=['datetime', 'station_name', 'bikes_available', 'booked_bikes', 'lat', 'lon'])
 
     # Add a column for weekdays
     df_bike_availability['weekday'] = df_bike_availability['datetime'].dt.weekday + 1
