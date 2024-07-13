@@ -67,12 +67,14 @@ def process_tar_files(tar_files_directory, output_csv, lat, lon):
                         datetime_str = member.name.split('_')[1].replace('-', '').replace('.asc',
                                                                                           '')  # Extract datetime part and remove .asc
                         dt = datetime.strptime(datetime_str, '%Y%m%d%H%M')
-                        dt = dt.replace(minute=0) + timedelta(hours=dt.minute // 30)  # Round to nearest hour
+                        dt = dt.replace(minute=0)  #truncate down the hour , if you want to round,
+                        # add + timedelta(hours=dt.minute // 30)
 
                         header_info, data = parse_asc(member.name)
                         value = find_nearest_grid_cell(header_info, data, lat, lon, p_stereo, nodata_value=-1)
                         if value is not None:
                             all_data.append((dt, value))
+                            all_data.append((dt.replace(minute=30), value))
 
                         # Clean up the extracted file
                         os.remove(member.name)
