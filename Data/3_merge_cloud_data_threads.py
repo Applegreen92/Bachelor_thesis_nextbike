@@ -94,7 +94,7 @@ with ThreadPoolExecutor(max_workers=12) as executor:
 
 # Combine results back into a single DataFrame
 final_df = pd.concat(results)
-
+final_df = final_df.sort_values(by='datetime')
 # Save the updated DataFrame with temperature data to a new CSV file
 base_name = os.path.basename(csv_file_path)
 new_base_name = f"cloudCover_{base_name}"

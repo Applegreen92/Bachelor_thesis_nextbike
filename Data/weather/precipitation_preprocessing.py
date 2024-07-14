@@ -67,8 +67,7 @@ def process_tar_files(tar_files_directory, output_csv, lat, lon):
                         datetime_str = member.name.split('_')[1].replace('-', '').replace('.asc',
                                                                                           '')  # Extract datetime part and remove .asc
                         dt = datetime.strptime(datetime_str, '%Y%m%d%H%M')
-                        dt = dt.replace(minute=0)  #truncate down the hour , if you want to round,
-                        # add + timedelta(hours=dt.minute // 30)
+                        dt = dt.replace(minute=0)  #+ timedelta(hours=dt.minute // 30)
 
                         header_info, data = parse_asc(member.name)
                         value = find_nearest_grid_cell(header_info, data, lat, lon, p_stereo, nodata_value=-1)
@@ -80,7 +79,7 @@ def process_tar_files(tar_files_directory, output_csv, lat, lon):
                         os.remove(member.name)
 
     # Convert to DataFrame
-    df = pd.DataFrame(all_data, columns=['Datetime', 'Precipitation'])
+    df = pd.DataFrame(all_data, columns=['datetime', 'precipitation'])
 
     # Save to CSV
     df.to_csv(output_csv, index=False)
@@ -88,7 +87,7 @@ def process_tar_files(tar_files_directory, output_csv, lat, lon):
 
 
 # Example usage
-tar_files_directory = 'precipitation/raw_data'  # Replace with your directory
+tar_files_directory = 'precipitation/raw_data/'  # Replace with your directory
 output_csv = 'preprocessed_precipitation_essen.csv'  # Replace with your output path
 lat_essen = 51.458744
 lon_essen = 7.004194
