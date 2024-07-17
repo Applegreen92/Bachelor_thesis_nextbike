@@ -1,75 +1,68 @@
 import pandas as pd
+import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.metrics import mean_absolute_error, r2_score, mean_squared_error
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
+from sklearn.linear_model import Lasso
+from sklearn.tree import DecisionTreeRegressor
+from xgboost import XGBRegressor
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Path to the preprocessed CSV file
-path_to_csv = 'ready_to_go.csv'
-
-# Read the CSV file into a DataFrame
-data = pd.read_csv(path_to_csv)
+# Load the dataset
+data_ready_updated = pd.read_csv('ready_to_go.csv')
 
 # Define features and target
-features = ['precipitation', 'sfcWind', 'cloud_cover', 'temperature','precipitation', 'is_holiday', 'minute', 'hour', 'day', 'month','weekday', 'year']
+features_updated = ['precipitation', 'sfcWind', 'cloud_cover', 'temperature', 'is_holiday', 'minute', 'hour', 'day', 'month', 'weekday', 'year']
 target = 'bikes_available'
 
 # Split the data into training and testing sets
-X = data[features]
-y = data[target]
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_updated = data_ready_updated[features_updated]
+y_updated = data_ready_updated[target]
+X_train_updated, X_test_updated, y_train_updated, y_test_updated = train_test_split(X_updated, y_updated, test_size=0.2, random_state=42)
 
-# Initialize and train the model
-model = RandomForestRegressor(random_state=42)
-model.fit(X_train, y_train)
+# Initialize models
+models = {
+    'RandomForest': RandomForestRegressor(random_state=42),
+    'GradientBoosting': GradientBoostingRegressor(random_state=42),
+    'Lasso': Lasso(random_state=42),
+    'DecisionTree': DecisionTreeRegressor(random_state=42),
+    'XGBoost': XGBRegressor(random_state=42)
+}
 
-# Make predictions
-y_pred = model.predict(X_test)
+# Train models and get feature importances
+feature_importances = {}
+for model_name, model in models.items():
+    model.fit(X_train_updated, y_train_updated)
+    if model_name == 'Lasso':
+        # Lasso doesn't have feature_importances_ attribute, we use coefficients instead
+        importance = np.abs(model.coef_)
+    else:
+        importance = model.feature_importances_
+    feature_importances[model_name] = importance
 
-# Evaluate the model
-mae = mean_absolute_error(y_test, y_pred)
-mean_error = (y_test - y_pred).mean()
-r2 = r2_score(y_test, y_pred)
-rmse = mean_squared_error(y_test, y_pred, squared=False)
+# Create a DataFrame for feature importances
+importance_df = pd.DataFrame(feature_importances, index=features_updated)
 
-print(f"Mean Absolute Error: {mae}")
-print(f"Mean Error: {mean_error}")
-print(f"Root Mean Squared Error: {rmse}")
-print(f"R^2 Score: {r2}")
+# Plot feature importances for each model
+fig, axes = plt.subplots(2, 3, figsize=(18, 12), sharey=True)
+fig.suptitle('Feature Importances Across Different Models')
 
-# Residual Plot
-residuals = y_test - y_pred
+for ax, model_name in zip(axes.flatten(), models.keys()):
+    sns.barplot(y=importance_df.index, x=importance_df[model_name], ax=ax)
+    ax.set_title(model_name)
+    ax.set_xlabel('Importance')
+    ax.set_ylabel('Feature')
 
-plt.figure(figsize=(10, 6))
-sns.scatterplot(x=y_test, y=y_pred, alpha=0.5)
-plt.plot([y_test.min(), y_test.max()], [y_test.min(), y_test.max()], '--r')
-plt.xlabel('Actual')
-plt.ylabel('Predicted')
-plt.title('Actual vs Predicted Bike Availability')
+# Remove the last empty subplot if models are less than the grid (2x3 here)
+if len(models) < 6:
+    fig.delaxes(axes.flatten()[len(models)])
+corr_matrix = data_ready_updated[features_updated].corr()
+
+# Plot the heatmap
+plt.figure(figsize=(12, 8))
+sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', center=0)
+plt.title('Feature Correlation Matrix')
 plt.show()
 
-plt.figure(figsize=(10, 6))
-sns.histplot(residuals, bins=30, kde=True)
-plt.xlabel('Residuals')
-plt.ylabel('Frequency')
-plt.title('Distribution of Residuals')
+plt.tight_layout(rect=[0, 0.03, 1, 0.95])
 plt.show()
-
-# Example prediction
-example_data = pd.DataFrame({
-    'precipitation': [0.1],
-    'sfcWind': [3.5],
-    'cloud_cover': [0.6],
-    'temperature': [22],
-    'is_holiday': [0],
-    'minute': [30],
-    'hour': [14],
-    'day': [15],
-    'month': [7],
-    'weekday': [2],
-    'year': [2023]
-})
-
-prediction = model.predict(example_data)
-print(f"Predicted Bike Availability: {prediction[0]}")
