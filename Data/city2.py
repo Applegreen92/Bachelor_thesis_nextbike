@@ -46,8 +46,7 @@ for gz_file_path in sorted(glob.glob(os.path.join(directory_path, '*.json.gz')))
             for country in data['countries']:
                 if country['country_name'] == 'Germany':
                     for city in country['cities']:
-                        print(city.name)
-                        if city['name'] in ['Essen']:
+                        if city['name'] in ['Nürnberg']:
                             for place in city['places']:
                                 station_name = place['name']
                                 if station_name.startswith('BIKE'):
@@ -93,7 +92,7 @@ df_bike_availability['is_weekend'] = df_bike_availability['datetime'].apply(is_w
 df_bike_availability['is_holiday'] = df_bike_availability['datetime'].apply(is_holiday)
 
 # Save the DataFrame to a CSV file
-save_file_path = 'preprocessed_data/Checked_preprocessed_data/Essen/bike_station_data_Essen.csv'
+save_file_path = 'preprocessed_data/bike_station_data_nürnberg.csv'
 
 df_bike_availability.to_csv(save_file_path, index=False)
 print("Data saved to " + save_file_path)
