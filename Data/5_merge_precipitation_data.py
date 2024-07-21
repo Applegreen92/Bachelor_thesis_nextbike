@@ -1,9 +1,8 @@
 import pandas as pd
 import os
 # Define file paths
-provided_csv_path = 'weather/precipitation/preprocessed_precipitation_essen.csv'
-target_csv_path = ('preprocessed_data/Checked_preprocessed_data/Essen'
-                   '/windSpeed_cloudCover_temp_bike_availability_essen.csv')
+provided_csv_path = 'weather/precipitation/preprocessed_precipitation_nürnberg.csv'
+target_csv_path = 'preprocessed_data/windSpeed_cloudCover_temp_bike_station_data_nürnberg.csv'
 
 
 

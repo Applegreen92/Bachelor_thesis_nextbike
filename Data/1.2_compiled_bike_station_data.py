@@ -46,8 +46,8 @@ for gz_file_path in sorted(glob.glob(os.path.join(directory_path, '*.json.gz')))
             for country in data['countries']:
                 if country['country_name'] == 'Germany':
                     for city in country['cities']:
-                        print(city.name)
-                        if city['name'] in ['Essen']:
+                        #print(city['name'])
+                        if city['name'] in ['Heidelberg']:
                             for place in city['places']:
                                 station_name = place['name']
                                 if station_name.startswith('BIKE'):
