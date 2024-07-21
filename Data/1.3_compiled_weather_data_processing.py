@@ -7,13 +7,9 @@ import pandas as pd
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Load the CSV file containing bike availability and station information
-<<<<<<< Updated upstream
-csv_file_path = 'preprocessed_data/Checked_preprocessed_data/Essen/bike_station_data_Essen.csv'
-||||||| Stash base
-csv_file_path = 'preprocessed_data/Checked_preprocessed_data/Essen/bike_availability_essen.csv'
-=======
+
 csv_file_path = 'preprocessed_data/bike_station_data_Essen.csv'
->>>>>>> Stashed changes
+
 csv_df = pd.read_csv(csv_file_path)
 csv_df['datetime'] = pd.to_datetime(csv_df['datetime'])
 
