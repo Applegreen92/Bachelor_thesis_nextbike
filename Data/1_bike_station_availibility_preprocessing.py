@@ -31,11 +31,11 @@ if __name__ == '__main__':
             # Read the JSON content
             data = pd.read_json(json_file)
 
-            # Get the data for Essen
+            # Get the data for essen
             for country in data['countries']:
                 if country['country_name'] == 'Germany':
                     for city in country['cities']:
-                        if city['name'] in ['Essen']:
+                        if city['name'] in ['essen']:
                             for place in city['places']:
                                 station_name = place['name']
                                 if station_name.startswith('BIKE'):
