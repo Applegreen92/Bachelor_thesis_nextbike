@@ -19,6 +19,7 @@ output_folder = 'pictures/'
 # Features to exclude from analysis
 exclude_features = ['datetime', 'lat', 'lon', 'station_name', 'year']
 
+
 # Function to plot feature importance
 def plot_feature_importance(importance, names, model_type, city_name):
     print(f"Plotting feature importance for {city_name} ({model_type})...")
@@ -38,6 +39,7 @@ def plot_feature_importance(importance, names, model_type, city_name):
     plt.close()
     print(f"Feature importance plot for {city_name} ({model_type}) saved.")
 
+
 # Function to plot heatmap of correlations
 def plot_correlation_heatmap(df, city_name):
     print(f"Plotting heatmap of correlations for {city_name}...")
@@ -48,6 +50,7 @@ def plot_correlation_heatmap(df, city_name):
     plt.close()
     print(f"Heatmap of correlations for {city_name} saved.")
 
+
 # Function to plot pair plot
 def plot_pair_plot(df, city_name):
     print(f"Plotting pair plot for {city_name}...")
@@ -57,6 +60,7 @@ def plot_pair_plot(df, city_name):
     plt.savefig(f'{output_folder}pair_plot_{city_name}.png')
     plt.close()
     print(f"Pair plot for {city_name} saved.")
+
 
 # Function to plot distribution plot
 def plot_distribution_plot(df, city_name):
@@ -69,6 +73,7 @@ def plot_distribution_plot(df, city_name):
         plt.close()
     print(f"Distribution plots for {city_name} saved.")
 
+
 # Function to plot box plot
 def plot_box_plot(df, city_name):
     print(f"Plotting box plot for {city_name}...")
@@ -79,6 +84,7 @@ def plot_box_plot(df, city_name):
     plt.savefig(f'{output_folder}box_plot_{city_name}.png')
     plt.close()
     print(f"Box plot for {city_name} saved.")
+
 
 # Function to plot scatter plot
 def plot_scatter_plot(df, city_name, target):
@@ -91,6 +97,7 @@ def plot_scatter_plot(df, city_name, target):
             plt.savefig(f'{output_folder}scatter_plot_{city_name}_{column}.png')
             plt.close()
     print(f"Scatter plots for {city_name} saved.")
+
 
 # Analyze each CSV file
 for csv_file in csv_files:
