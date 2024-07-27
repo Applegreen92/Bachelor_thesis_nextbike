@@ -26,7 +26,7 @@ combined_df = pd.concat(dataframes, ignore_index=True)
 combined_df = combined_df.sort_values(by='datetime')
 
 # Save the combined dataframe to a new CSV file
-output_path = 'combined_city_data.csv'
+output_path = 'combined_citys/combined_city_data.csv'
 combined_df.to_csv(output_path, index=False)
 
 # Verify the number of rows in the output file

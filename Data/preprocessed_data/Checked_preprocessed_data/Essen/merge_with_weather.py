@@ -1,6 +1,6 @@
 import pandas as pd
 
-target_file = 'bike_station_data_Essen.csv'
+target_file = '../Nürnberg/bikes_nürnberg.csv'
 get_data_file = 'weather_data_essen.csv'
 
 target_df = pd.read_csv(target_file)
