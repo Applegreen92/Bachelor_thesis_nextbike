@@ -1,43 +1,24 @@
+# Import necessary libraries
 import pandas as pd
-import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import train_test_split
 
-# Load the data from the CSV file
-csv_file = 'combined_city_data.csv'  # Replace with the path to your CSV file
-df = pd.read_csv(csv_file)
+# Load the dataset into a DataFrame
+# Replace 'your_dataset.csv' with the path to your dataset file
+df = pd.read_csv('combined_city_data.csv')
+df = df.drop(columns='year')
+# Calculate the correlation matrix
+correlation_matrix = df.corr()
 
-# Assuming the target variable is named 'target', and is present in the dataframe
-# If your target column has a different name, replace 'target' with the actual name
-target_column = 'bikes_available'  # Replace with the actual target column name
+# Set up the matplotlib figure
+plt.figure(figsize=(12, 10))
 
-# Separate features and target
-X = df.drop(columns=[target_column])
-y = df[target_column]
+# Draw the heatmap with the mask and correct aspect ratio
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', center=0,
+            square=True, linewidths=.5, cbar_kws={"shrink": .5})
 
-# Split data into training and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-# Train the RandomForestRegressor
-rf_regressor = RandomForestRegressor(n_estimators=100, random_state=42)
-rf_regressor.fit(X_train, y_train)
-
-# Extract feature importances
-feature_importances = rf_regressor.feature_importances_
-
-# Create a DataFrame for feature importances
-importance_df = pd.DataFrame({
-    'Feature': X.columns,
-    'Importance': feature_importances
-})
-
-# Sort the DataFrame by importance
-importance_df = importance_df.sort_values(by='Importance', ascending=False)
-
-# Plot the heatmap
-plt.figure(figsize=(12, 8))
-sns.heatmap(importance_df.set_index('Feature').T, annot=True, cmap='YlGnBu', cbar=True)
-plt.title('Feature Importances for RandomForestRegressor')
+# Title for the heatmap
+plt.title('Heatmap of Feature Correlations')
+plt.savefig('heatmap all')
+# Show the heatmap
 plt.show()
