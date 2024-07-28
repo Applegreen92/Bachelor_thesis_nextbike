@@ -10,6 +10,8 @@ df = df.drop(columns='year')
 # Calculate the correlation matrix
 correlation_matrix = df.corr()
 
+correlation_matrix = correlation_matrix.round(3)
+
 # Set up the matplotlib figure
 plt.figure(figsize=(12, 10))
 

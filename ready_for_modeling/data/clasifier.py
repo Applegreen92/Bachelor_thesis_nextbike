@@ -38,9 +38,9 @@ def train_and_evaluate_classifier(classifier_name, thresholds, selected_features
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
         if classifier_name == 'RandomForest':
-            classifier = RandomForestClassifier(n_estimators=150, random_state=42)
+            classifier = RandomForestClassifier(n_estimators=100, random_state=42)
         elif classifier_name == 'GradientBoosting':
-            classifier = GradientBoostingClassifier(n_estimators=150, random_state=42)
+            classifier = GradientBoostingClassifier(n_estimators=100, random_state=42)
         elif classifier_name == 'XGBoost':
             classifier = XGBClassifier(n_estimators=200, random_state=42, use_label_encoder=False,
                                        eval_metric='logloss')
@@ -86,20 +86,20 @@ def train_and_evaluate_classifier(classifier_name, thresholds, selected_features
 train_and_evaluate_classifier(
     classifier_name='RandomForest',
     thresholds=[1, 2, 3, 4, 5],
-    selected_features=['minute','hour','day','month','temperature','cloud_cover','sfcWind','precipitation'],  # Replace with your feature names
-    output_dir='150_random_forest_output'
+    selected_features=['bikes_booked','bikes_returned','minute','hour','day','month','year','weekday','is_weekend','is_holiday','temperature','cloud_cover','sfcWind','precipitation'],  # Replace with your feature names
+    output_dir='all_random_forest_output'
 )
 
 train_and_evaluate_classifier(
     classifier_name='GradientBoosting',
     thresholds=[1, 2, 3, 4, 5],
-    selected_features=['minute','hour','day','month','temperature','cloud_cover','sfcWind','precipitation'],  # Replace with your feature names
-    output_dir='150_gradient_boosting_output'
+    selected_features=['bikes_booked','bikes_returned','minute','hour','day','month','year','weekday','is_weekend','is_holiday','temperature','cloud_cover','sfcWind','precipitation'],  # Replace with your feature names
+    output_dir='all_gradient_boosting_output'
 )
 
 train_and_evaluate_classifier(
     classifier_name='XGBoost',
     thresholds=[1, 2, 3, 4, 5],
-    selected_features=['minute','hour','day','month','temperature','cloud_cover','sfcWind','precipitation'],  # Replace with your feature names
-    output_dir='200_xgboost_output'
+    selected_features=['bikes_booked','bikes_returned','minute','hour','day','month','year','weekday','is_weekend','is_holiday','temperature','cloud_cover','sfcWind','precipitation'],  # Replace with your feature names
+    output_dir='all_xgboost_output'
 )
