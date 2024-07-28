@@ -9,17 +9,15 @@ from sklearn.metrics import accuracy_score
 from keras.models import Sequential
 from keras.layers import LSTM, Dense
 from keras.callbacks import EarlyStopping
-
+import tensorflow as tf
 
 # Load the data from the CSV file
-csv_file = 'combined_city_data.csv'  # Replace with the path to your CSV file
+csv_file = 'combined_citys/combined_city_data.csv'  # Replace with the path to your CSV file
 original_df = pd.read_csv(csv_file)
-
 
 # Function to convert 'bikes_available' to a binary target variable based on a threshold
 def convert_target(data, threshold):
     return data['bikes_available'].apply(lambda x: 0 if x <= threshold else 1)
-
 
 # List of thresholds to test
 thresholds = [1, 2, 3, 4, 5]
@@ -31,6 +29,9 @@ os.makedirs(output_dir, exist_ok=True)
 # Initialize a dictionary to store accuracies
 results = {'Threshold': [], 'Accuracy': []}
 
+# List of features to exclude
+exclude_features = ['lon', 'lat', 'minute', 'hour', 'day', 'month', 'year']
+
 for threshold in thresholds:
     # Create a fresh copy of the original DataFrame for each threshold
     df = original_df.copy()
@@ -41,8 +42,8 @@ for threshold in thresholds:
     # Assuming there's a time component in the dataset, sort by it
     df = df.sort_values(by='time_column')  # Replace 'time_column' with the actual name of the time column
 
-    # Drop the original 'bikes_available' column as it is now the target
-    X = df.drop(columns=['bikes_available', 'target'])
+    # Drop the original 'bikes_available' column and exclude specified features
+    X = df.drop(columns=['bikes_available', 'target'] + exclude_features)
     y = df['target']
 
     # Normalize the data
