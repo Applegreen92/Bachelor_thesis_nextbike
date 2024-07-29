@@ -2,6 +2,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.preprocessing import StandardScaler
 from xgboost import XGBClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
@@ -35,6 +36,7 @@ def train_and_evaluate_classifier(classifier_name, thresholds, selected_features
         df['target'] = convert_target(df, threshold)
         X = df[selected_features]
         y = df['target']
+
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
         if classifier_name == 'RandomForest':
@@ -85,21 +87,21 @@ def train_and_evaluate_classifier(classifier_name, thresholds, selected_features
 
 train_and_evaluate_classifier(
     classifier_name='RandomForest',
-    thresholds=[1, 2, 3, 4, 5],
-    selected_features=['bikes_booked','bikes_returned','minute','hour','day','month','year','weekday','is_weekend','is_holiday','temperature','cloud_cover','sfcWind','precipitation'],  # Replace with your feature names
-    output_dir='all_random_forest_output'
+    thresholds=[0],
+    selected_features=['lon','lat','bikes_returned','bikes_difference','hour','month','weekday','is_weekend','is_holiday','temperature','cloud_cover','sfcWind','precipitation'],  # Replace with your feature names
+    output_dir='random_forest_output'
 )
 
 train_and_evaluate_classifier(
     classifier_name='GradientBoosting',
-    thresholds=[1, 2, 3, 4, 5],
-    selected_features=['bikes_booked','bikes_returned','minute','hour','day','month','year','weekday','is_weekend','is_holiday','temperature','cloud_cover','sfcWind','precipitation'],  # Replace with your feature names
-    output_dir='all_gradient_boosting_output'
+    thresholds=[0],
+    selected_features=['lon','lat','bikes_returned','bikes_difference','hour','month','weekday','is_weekend','is_holiday','temperature','cloud_cover','sfcWind','precipitation'],  # Replace with your feature names
+    output_dir='gradient_boosting_output'
 )
 
 train_and_evaluate_classifier(
     classifier_name='XGBoost',
-    thresholds=[1, 2, 3, 4, 5],
-    selected_features=['bikes_booked','bikes_returned','minute','hour','day','month','year','weekday','is_weekend','is_holiday','temperature','cloud_cover','sfcWind','precipitation'],  # Replace with your feature names
-    output_dir='all_xgboost_output'
+    thresholds=[0],
+    selected_features=['bikes_returned','bikes_difference','hour','day','month','weekday','is_weekend','is_holiday','temperature','cloud_cover','sfcWind','precipitation'],  # Replace with your feature names
+    output_dir='xgboost_output'
 )

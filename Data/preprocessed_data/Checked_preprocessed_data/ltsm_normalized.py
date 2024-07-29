@@ -10,17 +10,36 @@ from keras.models import Sequential
 from keras.layers import LSTM, Dense
 from keras.callbacks import EarlyStopping
 import tensorflow as tf
-
 # Load the data from the CSV file
 csv_file = 'combined_citys/combined_city_data.csv'  # Replace with the path to your CSV file
 original_df = pd.read_csv(csv_file)
+
+# Convert 'datetime' column to datetime object
+original_df['datetime'] = pd.to_datetime(original_df['datetime'])
+
 
 # Function to convert 'bikes_available' to a binary target variable based on a threshold
 def convert_target(data, threshold):
     return data['bikes_available'].apply(lambda x: 0 if x <= threshold else 1)
 
+
+# Function to encode time features as cyclical
+def encode_time_features(df):
+    df['minute_sin'] = np.sin(2 * np.pi * df['minute'] / 60)
+    df['minute_cos'] = np.cos(2 * np.pi * df['minute'] / 60)
+    df['hour_sin'] = np.sin(2 * np.pi * df['hour'] / 24)
+    df['hour_cos'] = np.cos(2 * np.pi * df['hour'] / 24)
+    df['day_sin'] = np.sin(2 * np.pi * df['day'] / 31)
+    df['day_cos'] = np.cos(2 * np.pi * df['day'] / 31)
+    df['month_sin'] = np.sin(2 * np.pi * df['month'] / 12)
+    df['month_cos'] = np.cos(2 * np.pi * df['month'] / 12)
+    df['weekday_sin'] = np.sin(2 * np.pi * df['weekday'] / 7)
+    df['weekday_cos'] = np.cos(2 * np.pi * df['weekday'] / 7)
+    return df
+
+
 # List of thresholds to test
-thresholds = [1, 2, 3, 4, 5]
+thresholds = [1]
 
 # Directory to save the plots
 output_dir = 'feature_importance_plots_lstm'
@@ -30,7 +49,7 @@ os.makedirs(output_dir, exist_ok=True)
 results = {'Threshold': [], 'Accuracy': []}
 
 # List of features to exclude
-exclude_features = ['lon', 'lat', 'minute', 'hour', 'day', 'month', 'year']
+exclude_features = ['station_name', 'datetime', 'bikes_available','minute','hour','day','month','weekday','year', 'bikes_booked']
 
 for threshold in thresholds:
     # Create a fresh copy of the original DataFrame for each threshold
@@ -39,11 +58,11 @@ for threshold in thresholds:
     # Convert 'bikes_available' to a binary target variable
     df['target'] = convert_target(df, threshold)
 
-    # Assuming there's a time component in the dataset, sort by it
-    df = df.sort_values(by='time_column')  # Replace 'time_column' with the actual name of the time column
+    # Encode time features as cyclical
+    df = encode_time_features(df)
 
     # Drop the original 'bikes_available' column and exclude specified features
-    X = df.drop(columns=['bikes_available', 'target'] + exclude_features)
+    X = df.drop(columns=exclude_features)
     y = df['target']
 
     # Normalize the data
