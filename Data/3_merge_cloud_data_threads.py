@@ -8,7 +8,7 @@ import pandas as pd
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Load the CSV file containing bike availability and station information
-csv_file_path = 'preprocessed_data/Checked_preprocessed_data/heidelberg/temp_bike_station_data_heidelberg.csv'
+csv_file_path = 'preprocessed_data/temp_2022_nürnberg_station.csv'
 csv_df = pd.read_csv(csv_file_path)
 
 

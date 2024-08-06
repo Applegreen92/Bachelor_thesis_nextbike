@@ -7,14 +7,14 @@ def process_bike_data(input_csv, output_csv):
 
 
 
-    # Calculate bikes_difference and add it as a new column
-    #df['bikes_difference'] = df['bikes_returned'] - df['bikes_booked']
+    #Calculate bikes_difference and add it as a new column
+    df['bikes_difference'] = df['bikes_returned'] - df['bikes_booked']
     
 
     # Write the updated DataFrame back to a new CSV file
     df.to_csv(output_csv, index=False)
 
 # Example usage
-input_csv = 'combined_city_data.csv'  # Replace with your input CSV file path
+input_csv = '2022_complete_dresden.csv'  # Replace with your input CSV file path
 output_csv = input_csv  # Replace with your desired output CSV file path
 process_bike_data(input_csv, output_csv)

@@ -1,7 +1,11 @@
 
 Data/nb23/
-
+Data/nb22/
 
 Data/weather/temperature
 Data/weather/wind_speed
 Data/weather/precipitation
+
+Data/weather_2022/temperature
+Data/weather_2022/wind_speed
+Data/weather_2022/precipitation

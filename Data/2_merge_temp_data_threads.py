@@ -7,7 +7,7 @@ import pandas as pd
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # Load the CSV file containing bike availability and station information
-csv_file_path = 'preprocessed_data/Checked_preprocessed_data/heidelberg/temp_bike_station_data_heidelberg.csv'
+csv_file_path = 'preprocessed_data/temp_2022_nürnberg_station.csv'
 csv_df = pd.read_csv(csv_file_path)
 
 # Convert 'datetime' column to datetime objects
@@ -68,7 +68,7 @@ def process_month(month, df):
 
 # Define the path template and months for the NetCDF files
 months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
-file_path_template = 'weather/temperature/temperature_{}.nc'
+file_path_template = 'weather_2022/temperature/temperature_{}.nc'
 
 # Preload NetCDF datasets into a dictionary
 datasets = {month: nc.Dataset(file_path_template.format(month)) for month in months}

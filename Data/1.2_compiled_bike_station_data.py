@@ -22,7 +22,7 @@ def is_holiday(date):
     return date in NRW_holidays
 
 # Directory containing the JSON.GZ files
-directory_path = 'nb23/nextbike/'
+directory_path = 'nb22/nextbike/'
 
 # Dictionary to hold the bike IDs at each station over time
 station_bike_ids = defaultdict(set)
@@ -47,7 +47,7 @@ for gz_file_path in sorted(glob.glob(os.path.join(directory_path, '*.json.gz')))
                 if country['country_name'] == 'Germany':
                     for city in country['cities']:
                         #print(city['name'])
-                        if city['name'] in ['Nürnberg']:
+                        if city['name'] in ['Heidelberg']:
                             for place in city['places']:
                                 station_name = place['name']
                                 if station_name.startswith('BIKE'):
@@ -93,7 +93,7 @@ df_bike_availability['is_weekend'] = df_bike_availability['datetime'].apply(is_w
 df_bike_availability['is_holiday'] = df_bike_availability['datetime'].apply(is_holiday)
 
 # Save the DataFrame to a CSV file
-save_file_path = 'preprocessed_data/Checked_preprocessed_data/Nürnberg/bikes_nürnberg.csv'
+save_file_path = 'preprocessed_data/Checked_preprocessed_data/heidelberg/2022_heidelberg_station.csv'
 
 df_bike_availability.to_csv(save_file_path, index=False)
 print("Data saved to " + save_file_path)
