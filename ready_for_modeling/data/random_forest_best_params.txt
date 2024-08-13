@@ -1,0 +1,3 @@
+Best Hyperparameters for RandomForest: {'n_estimators': 50, 'min_samples_split': 5, 'min_samples_leaf': 4, 'max_features': None, 'max_depth': 10, 'bootstrap': False}
+Best Cross-Validation Accuracy for RandomForest: 0.5287
+Total tuning time for RandomForest: 49390.98 seconds

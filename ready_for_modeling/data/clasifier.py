@@ -122,7 +122,7 @@ def train_and_evaluate_regressor(selected_features, output_dir):
 train_and_evaluate_classifier(
     classifier_name='RandomForest',
     thresholds=[0],
-    selected_features=['lon', 'lat', 'bikes_returned', 'bikes_difference', 'hour', 'month', 'weekday', 'is_weekend', 'is_holiday', 'temperature', 'cloud_cover', 'precipitation'],
+    selected_features=['lon', 'lat', 'bikes_booked', 'bikes_difference', 'hour', 'month', 'weekday', 'is_weekend', 'is_holiday', 'temperature', 'cloud_cover', 'precipitation'],
     output_dir='random_forest_output'
 )
 
@@ -139,8 +139,8 @@ train_and_evaluate_classifier(
 #     selected_features=['bikes_returned', 'bikes_difference', 'hour', 'day', 'month', 'weekday', 'is_weekend', 'is_holiday', 'temperature', 'cloud_cover', 'sfcWind', 'precipitation'],
 #     output_dir='xgboost_output'
 # )
-#
-# train_and_evaluate_regressor(
-#     selected_features=['lon', 'lat', 'bikes_returned', 'bikes_difference', 'hour', 'month', 'weekday', 'is_weekend', 'is_holiday', 'temperature', 'cloud_cover', 'sfcWind', 'precipitation'],
-#     output_dir='random_forest_regressor_output'
-#)
+
+train_and_evaluate_regressor(
+    selected_features=['lon', 'lat', 'bikes_booked', 'bikes_difference', 'hour', 'month', 'weekday', 'is_weekend', 'is_holiday', 'temperature', 'cloud_cover', 'sfcWind', 'precipitation'],
+    output_dir='random_forest_regressor_output'
+)

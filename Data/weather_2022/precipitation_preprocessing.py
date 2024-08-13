@@ -88,7 +88,7 @@ def process_tar_files(tar_files_directory, output_csv, lat, lon):
 
 # Example usage
 tar_files_directory = 'precipitation/raw_data/'  # Replace with your directory
-output_csv = 'preprocessed_precipitation_dresden.csv'  # Replace with your output path
-lat = 51.050407
-lon = 13.737262
+output_csv = 'preprocessed_precipitation_essen.csv'  # Replace with your output path
+lat = 51.450832
+lon = 7.013056
 process_tar_files(tar_files_directory, output_csv, lat, lon)
