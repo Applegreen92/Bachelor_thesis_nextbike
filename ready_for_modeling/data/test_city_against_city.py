@@ -4,23 +4,29 @@ from sklearn.neighbors import KNeighborsClassifier
 from xgboost import XGBClassifier
 from sklearn.metrics import accuracy_score, mean_squared_error
 
-# Load the training data
-train_df = pd.read_csv('combined_city_data.csv')
-
 # Define feature columns and target column
 selected_features = ['lon', 'lat', 'hour', 'month', 'weekday', 'is_weekend', 'is_holiday', 'temperature', 'sfcWind',
                      'precipitation']
 target_col = 'bikes_available'
 
-# Transform the target variable for binary classification
-train_df['binary_bikes_available'] = (train_df[target_col] > 0).astype(int)
+# List of training and corresponding test files
+train_files = [
+    '../../Data/preprocessed_data/Checked_preprocessed_data/combined_citys/combined_city_data.csv',
+    '../../Data/preprocessed_data/Checked_preprocessed_data/dresden/complete_dresden.csv',
+    '../../Data/preprocessed_data/Checked_preprocessed_data/Essen/complete_essen.csv',
+    '../../Data/preprocessed_data/Checked_preprocessed_data/heidelberg/complete_heidelberg.csv',
+    '../../Data/preprocessed_data/Checked_preprocessed_data/Nürnberg/complete_nürnberg.csv'
+]
 
-# Separate features and binary target variable from training data
-X_train = train_df[selected_features]
-y_train_clf = train_df['binary_bikes_available']
-y_train_reg = train_df[target_col].clip(upper=40)  # Cap the target values at 40
+test_files = [
+    '2022_combined_city_data.csv',
+    '2022_complete_dresden.csv',
+    '2022_complete_essen.csv',
+    '2022_complete_heidelberg.csv',
+    '2022_complete_nürnberg.csv'
+]
 
-# Initialize the RandomForestClassifier and RandomForestRegressor
+# Initialize the models with given hyperparameters
 clf_rf = RandomForestClassifier(
     n_estimators=50,
     min_samples_split=5,
@@ -41,8 +47,6 @@ reg_rf = RandomForestRegressor(
     random_state=3
 )
 
-
-# Initialize Gradient Boosting Classifier with given hyperparameters
 clf_gbm = GradientBoostingClassifier(
     subsample=0.6,
     n_estimators=200,
@@ -51,7 +55,6 @@ clf_gbm = GradientBoostingClassifier(
     random_state=3
 )
 
-# Initialize XGBoost Classifier with given hyperparameters
 clf_xgb = XGBClassifier(
     colsample_bytree=0.5765133157615585,
     gamma=2.8319073793101883,
@@ -65,25 +68,20 @@ clf_xgb = XGBClassifier(
     eval_metric='logloss'
 )
 
-# Fit the models on the training data
-clf_rf.fit(X_train, y_train_clf)
-reg_rf.fit(X_train, y_train_reg)  # Uncomment to fit the regressor
+# Loop through each training and test file pair
+for train_file, test_file in zip(train_files, test_files):
+    print(f"\nTraining on {train_file} and Evaluating on {test_file}...")
 
-clf_gbm.fit(X_train, y_train_clf)
-clf_xgb.fit(X_train, y_train_clf)
+    # Load the training data
+    train_df = pd.read_csv(train_file)
 
-# List of test CSV files
-test_files = [
-    '2022_combined_city_data.csv',
-    '2022_complete_dresden.csv',
-    '2022_complete_essen.csv',
-    '2022_complete_heidelberg.csv',
-    '2022_complete_nürnberg.csv'
-]
+    # Transform the target variable for binary classification
+    train_df['binary_bikes_available'] = (train_df[target_col] > 0).astype(int)
 
-# Loop through each test file, evaluate the models, and print results
-for test_file in test_files:
-    print(f"\nEvaluating on {test_file}...")
+    # Separate features and binary target variable from training data
+    X_train = train_df[selected_features]
+    y_train_clf = train_df['binary_bikes_available']
+    y_train_reg = train_df[target_col].clip(upper=40)  # Cap the target values at 40
 
     # Load the testing data
     test_df = pd.read_csv(test_file)
@@ -96,9 +94,16 @@ for test_file in test_files:
     y_test_clf = test_df['binary_bikes_available']
     y_test_reg = test_df[target_col].clip(upper=40)  # Cap the target values at 40
 
+    # Train the models on the current training data
+    clf_rf.fit(X_train, y_train_clf)
+    reg_rf.fit(X_train, y_train_reg)
+
+    clf_gbm.fit(X_train, y_train_clf)
+    clf_xgb.fit(X_train, y_train_clf)
+
     # Make predictions on the testing data
     clf_rf_predictions = clf_rf.predict(X_test)
-    reg_rf_predictions = reg_rf.predict(X_test)  # Uncomment to use the regressor
+    reg_rf_predictions = reg_rf.predict(X_test)
 
     clf_gbm_predictions = clf_gbm.predict(X_test)
     clf_xgb_predictions = clf_xgb.predict(X_test)
@@ -108,7 +113,7 @@ for test_file in test_files:
     clf_gbm_accuracy = accuracy_score(y_test_clf, clf_gbm_predictions)
     clf_xgb_accuracy = accuracy_score(y_test_clf, clf_xgb_predictions)
 
-    # Calculate the mean squared error for the regressor (if needed)
+    # Calculate the mean squared error for the regressor
     reg_rf_mse = mean_squared_error(y_test_reg, reg_rf_predictions)
 
     # Print results
@@ -116,4 +121,4 @@ for test_file in test_files:
     print(f'Random Forest Classifier Accuracy: {clf_rf_accuracy:.4f}')
     print(f'Gradient Boosting Classifier Accuracy: {clf_gbm_accuracy:.4f}')
     print(f'XGBoost Classifier Accuracy: {clf_xgb_accuracy:.4f}')
-    print(f'Regressor Mean Squared Error: {reg_rf_mse:.4f}')  # Uncomment to display MSE for the regressor
+    print(f'Regressor Mean Squared Error: {reg_rf_mse:.4f}')

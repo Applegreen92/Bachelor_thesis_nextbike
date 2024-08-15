@@ -27,7 +27,7 @@ param_dist = {
 }
 
 # Initialize the RandomForestRegressor
-reg = RandomForestRegressor(random_state=3)
+reg = RandomForestRegressor(random_state=42)
 
 # Set up RandomizedSearchCV
 random_search = RandomizedSearchCV(estimator=reg,
@@ -35,7 +35,7 @@ random_search = RandomizedSearchCV(estimator=reg,
                                    n_iter=200,  # 150 different random combinations
                                    scoring='neg_mean_squared_error',
                                    n_jobs=-1,  # Use all available cores
-                                   random_state=3,  # For reproducibility
+                                   random_state=42,  # For reproducibility
                                    verbose=2)
 
 # Fit RandomizedSearchCV to the training data
