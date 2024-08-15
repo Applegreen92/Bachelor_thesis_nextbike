@@ -278,55 +278,6 @@ def plot_annual_bikes_and_counts(data_file, count_file, output_dir):
 
 
 
-def plot_average_bikes_all_stations_combined(data_files):
-    """
-    Plots the normalized average bike availability for all stations combined per hour over the year for multiple CSV files.
-
-    Parameters:
-    data_files (list of str): List of paths to the CSV files containing the data.
-    output_dir (str): Directory where the plots will be saved.
-    """
-    # Initialize a figure
-    plt.figure(figsize=(18, 6))
-
-    # Initialize the scaler
-    scaler = MinMaxScaler()
-
-    # Loop through each file and plot its data
-    for data_file in data_files:
-        # Load the data
-        df = pd.read_csv(data_file)
-
-        # Convert the datetime column to a datetime object
-        df['datetime'] = pd.to_datetime(df['datetime'])
-
-        # Extract the hour and minute components as a string format for easier plotting
-        df['time'] = df['datetime'].dt.strftime('%H:%M')
-
-        # Group by time to calculate the mean bike availability across all stations
-        hourly_availability = df.groupby('time')['bikes_available'].mean().reset_index()
-
-        # Normalize the bike availability
-        hourly_availability['bikes_available'] = scaler.fit_transform(hourly_availability[['bikes_available']])
-
-        # Plot the normalized average bikes available per hour for all stations combined
-        plt.plot(hourly_availability['time'], hourly_availability['bikes_available'], marker='o', linestyle='-', label=f'{data_file}')
-
-    # Set the title and labels
-    plt.title('Normalized Average Bikes Available per Hour for All Stations')
-    plt.xlabel('Time of the Day')
-    plt.ylabel('Normalized Average Bikes Available')
-    plt.xticks(rotation=45)
-    plt.legend()
-    plt.tight_layout()
-
-    # Save the plot
-    plt.savefig(f'normalized_average_bikes_available_per_hour_all_stations_combined.png')
-
-    # Show the plot
-    plt.show()
-
-
 def plot_normalized_daily_means_weather_data_with_bike_availibility(file_path):
     """
     Reads the dataset, computes daily mean values, normalizes them, and plots
@@ -365,21 +316,74 @@ def plot_normalized_daily_means_weather_data_with_bike_availibility(file_path):
     plt.grid(True)
     plt.show()
 
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import MinMaxScaler
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import MinMaxScaler
+
+def plot_smoothed_monthly_mean_temp_vs_bikes_booked(data_file, output_dir, window_size=3):
+    """
+    Plots the smoothed monthly mean temperature and the mean bikes booked over the year.
+
+    Parameters:
+    data_file (str): Path to the CSV file containing the data.
+    output_dir (str): Directory where the plots will be saved.
+    window_size (int): The window size for the rolling mean to smooth the curves. Default is 3.
+    """
+    # Load the data
+    df = pd.read_csv(data_file)
+
+    # Convert the datetime column to a datetime object
+    df['datetime'] = pd.to_datetime(df['datetime'])
+
+    # Extract the month from the datetime column
+    df['month'] = df['datetime'].dt.month
+
+    # Group by month to calculate the mean temperature and mean bikes booked
+    monthly_data = df.groupby('month')[['temperature', 'bikes_booked']].mean().reset_index()
+
+    # Apply a rolling mean to smooth the data
+    monthly_data['temperature'] = monthly_data['temperature'].rolling(window=window_size, center=True).mean()
+    monthly_data['bikes_booked'] = monthly_data['bikes_booked'].rolling(window=window_size, center=True).mean()
+
+    # Normalize the data
+    scaler = MinMaxScaler()
+    monthly_data[['temperature', 'bikes_booked']] = scaler.fit_transform(monthly_data[['temperature', 'bikes_booked']])
+
+    # Plot the smoothed monthly mean temperature and mean bikes booked
+    plt.figure(figsize=(12, 6))
+    plt.plot(monthly_data['month'], monthly_data['temperature'], marker='o', linestyle='-', label='Temperature')
+    plt.plot(monthly_data['month'], monthly_data['bikes_booked'], marker='o', linestyle='-', label='Bikes Booked')
+
+    plt.title('Smoothed Monthly Mean Temperature and Bikes Booked (Normalized)')
+    plt.xlabel('Month')
+    plt.ylabel('Normalized Mean Value')
+    plt.xticks(monthly_data['month'])
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(f'{output_dir}smoothed_monthly_mean_temp_vs_bikes_booked.png')
+    plt.show()
+
+# Example usage:
+#plot_smoothed_monthly_mean_temp_vs_bikes_booked('path/to/data_file.csv', 'path/to/output_dir/')
+
+
+
+
+
+
+# plot_monthly_mean_temp_vs_bikes_booked('path/to/data_file.csv', 'path/to/output_dir/')
+
+
 #plot_normalized_daily_means_weather_data_with_bike_availibility('combined_citys/combined_city_data.csv')
 
-
-
-
-
-
-
-
-
-
-
-
 file_path = 'Nürnberg/complete_nürnberg.csv'
-# Example usage
+plot_smoothed_monthly_mean_temp_vs_bikes_booked('combined_citys/combined_city_data.csv','',3)
 #plot_average_bikes_per_station(file_path, '')
 #plot_average_bikes_all_stations_combined(file_path, '')
 #plot_normalized_bikes_and_bookings(file_path,'')
