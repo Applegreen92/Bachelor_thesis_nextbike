@@ -15,6 +15,6 @@ def process_bike_data(input_csv, output_csv):
     df.to_csv(output_csv, index=False)
 
 # Example usage
-input_csv = '2022_complete_dresden.csv'  # Replace with your input CSV file path
+input_csv = '2022_complete_essen.csv'  # Replace with your input CSV file path
 output_csv = input_csv  # Replace with your desired output CSV file path
 process_bike_data(input_csv, output_csv)

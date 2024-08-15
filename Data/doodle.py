@@ -6,6 +6,7 @@ from collections import defaultdict
 from datetime import datetime
 import holidays
 
+
 def extract_timestamp_from_filename(filename):
     base_name = os.path.basename(filename)
     # Filename format: nextbike_YYYYMMDD_HHMM.json.gz
@@ -13,16 +14,20 @@ def extract_timestamp_from_filename(filename):
     timestamp = pd.to_datetime(date_str, format='%Y%m%d%H%M')
     return timestamp
 
+
 def is_weekend(date):
     return date.weekday() >= 5
 
+
 NRW_holidays = holidays.Germany(state='NW', years=2023)
+
 
 def is_holiday(date):
     return date in NRW_holidays
 
+
 # Directory containing the JSON.GZ files
-directory_path = 'nb22/nextbike/'
+directory_path = 'nb23/nextbike/'
 
 # Dictionary to hold the bike IDs at each station over time
 station_bike_ids = defaultdict(set)
@@ -46,8 +51,11 @@ for gz_file_path in sorted(glob.glob(os.path.join(directory_path, '*.json.gz')))
             for country in data['countries']:
                 if country['country_name'] == 'Germany':
                     for city in country['cities']:
-                        print(city['name'])
-                        if city['name'] in ['Heidelberg']:
+                        # Get the city's latitude and longitude
+                        city_lat = city['lat']
+                        city_lng = city['lng']
+
+                        if city['name'] in ['Heidelberg','Essen','Nürnberg','Dresden']:
                             for place in city['places']:
                                 station_name = place['name']
                                 if station_name.startswith('BIKE'):
@@ -55,6 +63,8 @@ for gz_file_path in sorted(glob.glob(os.path.join(directory_path, '*.json.gz')))
                                 available_bikes = place['bikes_available_to_rent']
                                 lat = place['lat']
                                 lng = place['lng']
+                                bike_racks = place['bike_racks']
+                                free_racks = place['free_racks']
                                 bike_numbers = set(place.get('bike_numbers', []))
 
                                 # Calculate bikes booked and returned
@@ -70,9 +80,10 @@ for gz_file_path in sorted(glob.glob(os.path.join(directory_path, '*.json.gz')))
                                 station_bike_ids[station_name] = bike_numbers
 
                                 data_records.append(
-                                    [timestamp, station_name, available_bikes, bikes_booked, bikes_returned, lat, lng])
+                                    [timestamp, station_name, available_bikes, bikes_booked, bikes_returned, lat, lng,
+                                     city_lat, city_lng, bike_racks, free_racks])
                                 print(
-                                    f"Added data: {[timestamp, station_name, available_bikes, bikes_booked, bikes_returned, lat, lng]}")
+                                    f"Added data: {[timestamp, station_name, available_bikes, bikes_booked, bikes_returned, lat, lng, city_lat, city_lng, bike_racks, free_racks]}")
 
     except Exception as e:
         print(f"Error processing file {gz_file_path}: {e}")
@@ -80,7 +91,8 @@ for gz_file_path in sorted(glob.glob(os.path.join(directory_path, '*.json.gz')))
 # Convert the list of records into a DataFrame
 df_bike_availability = pd.DataFrame(data_records,
                                     columns=['datetime', 'station_name', 'bikes_available', 'bikes_booked',
-                                             'bikes_returned', 'lat', 'lon'])
+                                             'bikes_returned', 'lat', 'lon', 'city_lat', 'city_lng', 'bike_racks',
+                                             'free_racks'])
 
 # Add additional temporal features
 df_bike_availability['minute'] = df_bike_availability['datetime'].dt.minute
@@ -93,7 +105,7 @@ df_bike_availability['is_weekend'] = df_bike_availability['datetime'].apply(is_w
 df_bike_availability['is_holiday'] = df_bike_availability['datetime'].apply(is_holiday)
 
 # Save the DataFrame to a CSV file
-save_file_path = 'preprocessed_data/Checked_preprocessed_data/heidelberg/2022_heidelberg_station.csv'
+save_file_path = ('new_data.csv')
 
 df_bike_availability.to_csv(save_file_path, index=False)
 print("Data saved to " + save_file_path)

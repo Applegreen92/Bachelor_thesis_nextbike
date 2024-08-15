@@ -1,0 +1,85 @@
+Hyperparameter were tuned on:
+
+clf_rf = RandomForestClassifier(
+    n_estimators=50,
+    min_samples_split=5,
+    min_samples_leaf=4,
+    max_features=None,
+    max_depth=10,
+    bootstrap=False,
+    random_state=3
+)
+
+reg_rf = RandomForestRegressor(
+    n_estimators=50,
+    min_samples_split=5,
+    min_samples_leaf=4,
+    max_features=None,
+    max_depth=10,
+    bootstrap=False,
+    random_state=3
+)
+
+
+# Initialize Gradient Boosting Classifier with given hyperparameters
+clf_gbm = GradientBoostingClassifier(
+    subsample=0.6,
+    n_estimators=200,
+    max_depth=10,
+    learning_rate=0.01,
+    random_state=3
+)
+
+# Initialize XGBoost Classifier with given hyperparameters
+clf_xgb = XGBClassifier(
+    subsample=0.6,
+    n_estimators=200,
+    max_depth=10,
+    learning_rate=0.01,
+    random_state=3,
+    use_label_encoder=False,
+    eval_metric='logloss'
+)
+
+
+Evaluating on 2022_combined_city_data.csv...
+Results for 2022_combined_city_data.csv:
+Random Forest Classifier Accuracy: 0.7720
+KNN Classifier Accuracy: 0.7053
+Gradient Boosting Classifier Accuracy: 0.8082
+XGBoost Classifier Accuracy: 0.8064
+Regressor Mean Squared Error: 20.8122
+
+Evaluating on 2022_complete_dresden.csv...
+Results for 2022_complete_dresden.csv:
+Random Forest Classifier Accuracy: 0.6641
+KNN Classifier Accuracy: 0.5524
+Gradient Boosting Classifier Accuracy: 0.7221
+XGBoost Classifier Accuracy: 0.7189
+Regressor Mean Squared Error: 5.3245
+
+Evaluating on 2022_complete_essen.csv...
+Results for 2022_complete_essen.csv:
+Random Forest Classifier Accuracy: 0.7846
+KNN Classifier Accuracy: 0.7692
+Gradient Boosting Classifier Accuracy: 0.8332
+XGBoost Classifier Accuracy: 0.8309
+Regressor Mean Squared Error: 26.8643
+
+Evaluating on 2022_complete_heidelberg.csv...
+Results for 2022_complete_heidelberg.csv:
+Random Forest Classifier Accuracy: 0.8798
+KNN Classifier Accuracy: 0.8410
+Gradient Boosting Classifier Accuracy: 0.8798
+XGBoost Classifier Accuracy: 0.8798
+Regressor Mean Squared Error: 47.4974
+
+Evaluating on 2022_complete_nürnberg.csv...
+Results for 2022_complete_nürnberg.csv:
+Random Forest Classifier Accuracy: 0.9136
+KNN Classifier Accuracy: 0.8534
+Gradient Boosting Classifier Accuracy: 0.9128
+XGBoost Classifier Accuracy: 0.9132
+Regressor Mean Squared Error: 23.8059
+
+Process finished with exit code 0
