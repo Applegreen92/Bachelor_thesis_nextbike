@@ -21,34 +21,34 @@ y_train_clf = train_df['binary_bikes_available']
 y_train_reg = train_df[target_col]
 
 # Initialize the RandomForestClassifier and RandomForestRegressor
-clf_rf = RandomForestClassifier(
-    n_estimators=50,
-    min_samples_split=5,
-    min_samples_leaf=4,
-    max_features=None,
-    max_depth=10,
-    bootstrap=False,
-    random_state=42
-)
-
-reg_rf = RandomForestRegressor(
-    n_estimators=50,
-    min_samples_split=5,
-    min_samples_leaf=4,
-    max_features=None,
-    max_depth=10,
-    bootstrap=False,
-    random_state=42
-)
-
-# Initialize Gradient Boosting Classifier with given hyperparameters
-clf_gbm = GradientBoostingClassifier(
-    subsample=0.6,
-    n_estimators=200,
-    max_depth=10,
-    learning_rate=0.01,
-    random_state=42
-)
+# clf_rf = RandomForestClassifier(
+#     n_estimators=50,
+#     min_samples_split=5,
+#     min_samples_leaf=4,
+#     max_features=None,
+#     max_depth=10,
+#     bootstrap=False,
+#     random_state=42
+# )
+#
+# reg_rf = RandomForestRegressor(
+#     n_estimators=50,
+#     min_samples_split=5,
+#     min_samples_leaf=4,
+#     max_features=None,
+#     max_depth=10,
+#     bootstrap=False,
+#     random_state=42
+# )
+#
+# # Initialize Gradient Boosting Classifier with given hyperparameters
+# clf_gbm = GradientBoostingClassifier(
+#     subsample=0.6,
+#     n_estimators=200,
+#     max_depth=10,
+#     learning_rate=0.01,
+#     random_state=42
+# )
 
 # Initialize XGBoost Classifier with given hyperparameters
 clf_xgb = XGBClassifier(
@@ -77,10 +77,10 @@ reg_xgb = XGBRegressor(
 )
 
 # Fit the models on the training data
-clf_rf.fit(X_train, y_train_clf)
-reg_rf.fit(X_train, y_train_reg)  # Uncomment to fit the regressor
+# clf_rf.fit(X_train, y_train_clf)
+# reg_rf.fit(X_train, y_train_reg)  # Uncomment to fit the regressor
 
-clf_gbm.fit(X_train, y_train_clf)
+#clf_gbm.fit(X_train, y_train_clf)
 clf_xgb.fit(X_train, y_train_clf)
 reg_xgb.fit(X_train, y_train_reg)  # Fit the XGBoost Regressor
 
@@ -105,26 +105,26 @@ for test_file in test_files:
     y_test_reg = test_df[target_col]
 
     # Make predictions on the testing data
-    clf_rf_predictions = clf_rf.predict(X_test)
-    reg_rf_predictions = reg_rf.predict(X_test)  # Uncomment to use the regressor
-
-    clf_gbm_predictions = clf_gbm.predict(X_test)
+    # clf_rf_predictions = clf_rf.predict(X_test)
+    # reg_rf_predictions = reg_rf.predict(X_test)  # Uncomment to use the regressor
+    #
+    # clf_gbm_predictions = clf_gbm.predict(X_test)
     clf_xgb_predictions = clf_xgb.predict(X_test)
     reg_xgb_predictions = reg_xgb.predict(X_test)  # Use the XGBoost Regressor
 
     # Calculate the accuracy for the classifiers
-    clf_rf_accuracy = accuracy_score(y_test_clf, clf_rf_predictions)
-    clf_gbm_accuracy = accuracy_score(y_test_clf, clf_gbm_predictions)
+    # clf_rf_accuracy = accuracy_score(y_test_clf, clf_rf_predictions)
+    # clf_gbm_accuracy = accuracy_score(y_test_clf, clf_gbm_predictions)
     clf_xgb_accuracy = accuracy_score(y_test_clf, clf_xgb_predictions)
 
     # Calculate the mean squared error for the regressors
-    reg_rf_mse = mean_squared_error(y_test_reg, reg_rf_predictions)
+    #reg_rf_mse = mean_squared_error(y_test_reg, reg_rf_predictions)
     reg_xgb_mse = mean_squared_error(y_test_reg, reg_xgb_predictions)
 
     # Print results
     print(f'Results for {test_file}:')
-    print(f'Random Forest Classifier Accuracy: {clf_rf_accuracy:.4f}')
-    print(f'Gradient Boosting Classifier Accuracy: {clf_gbm_accuracy:.4f}')
+    #print(f'Random Forest Classifier Accuracy: {clf_rf_accuracy:.4f}')
+    #print(f'Gradient Boosting Classifier Accuracy: {clf_gbm_accuracy:.4f}')
     print(f'XGBoost Classifier Accuracy: {clf_xgb_accuracy:.4f}')
-    print(f'Regressor Mean Squared Error (RF): {reg_rf_mse:.4f}')
+    #print(f'Regressor Mean Squared Error (RF): {reg_rf_mse:.4f}')
     print(f'Regressor Mean Squared Error (XGB): {reg_xgb_mse:.4f}')  # Display MSE for the XGBoost Regressor

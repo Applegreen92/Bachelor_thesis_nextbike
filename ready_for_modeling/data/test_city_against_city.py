@@ -48,14 +48,6 @@ reg_rf = RandomForestRegressor(
 )
 
 clf_gbm = GradientBoostingClassifier(
-    subsample=0.6,
-    n_estimators=200,
-    max_depth=10,
-    learning_rate=0.01,
-    random_state=3
-)
-
-clf_xgb = XGBClassifier(
     colsample_bytree=0.5765133157615585,
     gamma=2.8319073793101883,
     learning_rate=0.015406375121368878,
@@ -63,7 +55,20 @@ clf_xgb = XGBClassifier(
     min_child_weight=1,
     n_estimators=70,
     subsample=0.9033844439161279,
-    random_state=3,
+    random_state=42,
+    use_label_encoder=False,
+    eval_metric='logloss'
+)
+
+clf_xgb = XGBClassifier(
+    colsample_bytree=0.6977924525180372,
+    gamma=4.897754201908785,
+    learning_rate=0.03899301447596341,
+    max_depth=9,
+    min_child_weight=5,
+    n_estimators=265,
+    subsample=0.6657489216128507,
+    random_state=42,
     use_label_encoder=False,
     eval_metric='logloss'
 )
