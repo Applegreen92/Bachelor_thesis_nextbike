@@ -5,10 +5,10 @@ from sklearn.metrics import accuracy_score
 from scipy.stats import uniform, randint
 
 # Load the training data
-train_df = pd.read_csv('combined_city_data.csv')
+train_df = pd.read_csv('test_data/new_combined_city_data.csv')
 
 # Define feature columns and target column
-selected_features = ['lon', 'lat', 'hour', 'month', 'weekday', 'is_weekend', 'is_holiday', 'temperature', 'sfcWind',
+selected_features = ['city_lat','city_lng','bike_racks','lon', 'lat', 'hour', 'month', 'weekday', 'is_weekend', 'is_holiday', 'temperature', 'sfcWind',
                      'precipitation']
 target_col = 'bikes_available'
 
@@ -21,7 +21,7 @@ y_train_clf = train_df['binary_bikes_available']
 
 # Initialize XGBoost Classifier
 clf_xgb = XGBClassifier(
-    random_state=3,
+    random_state=42,
     use_label_encoder=False,
     eval_metric='logloss'
 )
@@ -41,10 +41,11 @@ param_dist = {
 random_search = RandomizedSearchCV(
     estimator=clf_xgb,
     param_distributions=param_dist,
-    n_iter=200,
+    n_iter=400,
     scoring='accuracy',
     n_jobs=-1,
     verbose=1,
+    cv=3,
     random_state=3
 )
 
@@ -60,7 +61,7 @@ best_clf_xgb = random_search.best_estimator_
 
 # List of test CSV files
 test_files = [
-    '2022_combined_city_data.csv',
+    '',
 ]
 
 # Loop through each test file, evaluate the models, and print results

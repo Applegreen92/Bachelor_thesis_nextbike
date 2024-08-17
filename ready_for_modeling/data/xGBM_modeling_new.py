@@ -33,20 +33,20 @@ clf_xgb = XGBClassifier(
 )
 
 # Initialize XGBoost Regressor with given hyperparameters
-reg_xgb = XGBRegressor(
-    colsample_bytree=0.6977924525180372,
-    gamma=4.897754201908785,
-    learning_rate=0.03899301447596341,
-    max_depth=9,
-    min_child_weight=5,
-    n_estimators=265,
-    subsample=0.6657489216128507,
-    random_state=3
-)
+# reg_xgb = XGBRegressor(
+#     colsample_bytree=0.6977924525180372,
+#     gamma=4.897754201908785,
+#     learning_rate=0.03899301447596341,
+#     max_depth=9,
+#     min_child_weight=5,
+#     n_estimators=265,
+#     subsample=0.6657489216128507,
+#     random_state=3
+# )
 
 # Fit the models on the training data
 clf_xgb.fit(X_train, y_train_clf)
-reg_xgb.fit(X_train, y_train_reg)
+#reg_xgb.fit(X_train, y_train_reg)
 
 # List of test CSV files
 test_files = [
@@ -70,15 +70,15 @@ for test_file in test_files:
 
     # Make predictions on the testing data
     clf_xgb_predictions = clf_xgb.predict(X_test)
-    reg_xgb_predictions = reg_xgb.predict(X_test)
+    #reg_xgb_predictions = reg_xgb.predict(X_test)
 
     # Calculate the accuracy for the classifier
     clf_xgb_accuracy = accuracy_score(y_test_clf, clf_xgb_predictions)
 
     # Calculate the RMSE for the regressor
-    reg_xgb_rmse = np.sqrt(mean_squared_error(y_test_reg, reg_xgb_predictions))
+    #reg_xgb_rmse = np.sqrt(mean_squared_error(y_test_reg, reg_xgb_predictions))
 
     # Print results
     print(f'Results for {test_file}:')
     print(f'XGBoost Classifier Accuracy: {clf_xgb_accuracy:.4f}')
-    print(f'XGBoost Regressor RMSE: {reg_xgb_rmse:.4f}')
+    #print(f'XGBoost Regressor RMSE: {reg_xgb_rmse:.4f}')
