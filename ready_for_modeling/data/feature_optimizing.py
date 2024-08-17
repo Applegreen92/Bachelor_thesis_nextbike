@@ -4,10 +4,10 @@ from sklearn.metrics import accuracy_score
 from mlxtend.feature_selection import SequentialFeatureSelector as SFS
 
 # Load the training data
-train_df = pd.read_csv('combined_city_data.csv')
+train_df = pd.read_csv('test_data/new_combined_city_data.csv')
 
 # Define feature columns and target column
-selected_features = ['lon', 'lat', 'hour', 'month', 'weekday', 'is_weekend', 'is_holiday', 'temperature', 'sfcWind', 'precipitation']
+selected_features = ['city_lat','city_lng','bike_racks','lon', 'lat', 'hour', 'month', 'weekday', 'is_weekend', 'is_holiday', 'temperature', 'sfcWind', 'precipitation']
 target_col = 'bikes_available'
 
 # Transform the target variable for binary classification
@@ -52,11 +52,7 @@ X_train_sfs = sfs.transform(X_train)
 
 # List of test CSV files
 test_files = [
-    '2022_combined_city_data.csv',
-    '2022_complete_dresden.csv',
-    '2022_complete_essen.csv',
-    '2022_complete_heidelberg.csv',
-    '2022_complete_nürnberg.csv'
+    'test_data/new_2022_combined_city_data.csv'
 ]
 
 # Loop through each test file, evaluate the model, and print results
