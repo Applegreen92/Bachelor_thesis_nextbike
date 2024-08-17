@@ -1,7 +1,7 @@
 import pandas as pd
-from xgboost import XGBClassifier, XGBRegressor
-from sklearn.metrics import accuracy_score, mean_squared_error
-import numpy as np
+from xgboost import XGBClassifier
+from sklearn.metrics import accuracy_score
+from mlxtend.feature_selection import SequentialFeatureSelector as SFS
 
 # Load the training data
 train_df = pd.read_csv('test_data/new_combined_city_data.csv')
@@ -16,10 +16,9 @@ train_df['binary_bikes_available'] = (train_df[target_col] > 0).astype(int)
 # Separate features and binary target variable from training data
 X_train = train_df[selected_features]
 y_train_clf = train_df['binary_bikes_available']
-y_train_reg = train_df[target_col]  # Cap the target values at 40
 
-# Initialize XGBoost Classifier with given hyperparameters
-clf_xgb = XGBClassifier(
+# Initialize the XGBoost classifier with the specified hyperparameters
+model = XGBClassifier(
     colsample_bytree=0.5765133157615585,
     gamma=2.8319073793101883,
     learning_rate=0.015406375121368878,
@@ -32,28 +31,31 @@ clf_xgb = XGBClassifier(
     eval_metric='logloss'
 )
 
-# Initialize XGBoost Regressor with given hyperparameters
-# reg_xgb = XGBRegressor(
-#     colsample_bytree=0.6977924525180372,
-#     gamma=4.897754201908785,
-#     learning_rate=0.03899301447596341,
-#     max_depth=9,
-#     min_child_weight=5,
-#     n_estimators=265,
-#     subsample=0.6657489216128507,
-#     random_state=3
-# )
+# Initialize Sequential Feature Selector
+sfs = SFS(model,
+          k_features=5,  # Number of features to select
+          forward=True,  # Forward selection
+          floating=False,  # No floating steps
+          scoring='accuracy',  # Using accuracy as the evaluation metric
+          cv=5,  # 5-fold cross-validation
+          n_jobs=-1)  # Use all available CPUs
 
-# Fit the models on the training data
-clf_xgb.fit(X_train, y_train_clf)
-#reg_xgb.fit(X_train, y_train_reg)
+# Fit SFS on the training data
+sfs = sfs.fit(X_train, y_train_clf)
+
+# Get the selected features
+selected_features_sfs = list(sfs.k_feature_names_)
+print(f'Selected Features by SFS: {selected_features_sfs}')
+
+# Transform the training data to only include the selected features
+X_train_sfs = sfs.transform(X_train)
 
 # List of test CSV files
 test_files = [
     'test_data/new_2022_combined_city_data.csv'
 ]
 
-# Loop through each test file, evaluate the models, and print results
+# Loop through each test file, evaluate the model, and print results
 for test_file in test_files:
     print(f"\nEvaluating on {test_file}...")
 
@@ -65,20 +67,17 @@ for test_file in test_files:
 
     # Separate features and binary target variable from testing data
     X_test = test_df[selected_features]
+
+    # Transform the test data to include only the selected features
+    X_test_sfs = sfs.transform(X_test)
     y_test_clf = test_df['binary_bikes_available']
-    y_test_reg = test_df[target_col]
+
+    # Fit the model using the selected features
+    model.fit(X_train_sfs, y_train_clf)
 
     # Make predictions on the testing data
-    clf_xgb_predictions = clf_xgb.predict(X_test)
-    #reg_xgb_predictions = reg_xgb.predict(X_test)
+    predictions = model.predict(X_test_sfs)
 
-    # Calculate the accuracy for the classifier
-    clf_xgb_accuracy = accuracy_score(y_test_clf, clf_xgb_predictions)
-
-    # Calculate the RMSE for the regressor
-    #reg_xgb_rmse = np.sqrt(mean_squared_error(y_test_reg, reg_xgb_predictions))
-
-    # Print results
-    print(f'Results for {test_file}:')
-    print(f'XGBoost Classifier Accuracy: {clf_xgb_accuracy:.4f}')
-    #print(f'XGBoost Regressor RMSE: {reg_xgb_rmse:.4f}')
+    # Calculate and print the accuracy
+    accuracy = accuracy_score(y_test_clf, predictions)
+    print(f'Accuracy on {test_file}: {accuracy:.4f}')
