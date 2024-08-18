@@ -8,7 +8,7 @@ from scipy.stats import uniform, randint
 train_df = pd.read_csv('combined_city_data.csv')
 
 # Define feature columns and target column
-selected_features = ['lon', 'lat', 'hour', 'month', 'weekday', 'is_weekend', 'is_holiday', 'temperature', 'sfcWind',
+selected_features = ['city_lat','city_lng','bike_racks','lon', 'lat', 'hour', 'month', 'weekday', 'is_weekend', 'is_holiday', 'temperature', 'sfcWind',
                      'precipitation']
 target_col = 'bikes_available'
 
