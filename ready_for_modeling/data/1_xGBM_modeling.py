@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 train_df = pd.read_csv('test_data/new_combined_city_data.csv')
 
 # Define feature columns and target column
-selected_features = ['lon', 'lat', 'hour', 'month', 'weekday', 'is_weekend', 'is_holiday', 'temperature', 'sfcWind', 'precipitation']
+selected_features = ['city_lng','city_lat','bike_racks','lon', 'lat', 'hour', 'month', 'weekday', 'is_weekend', 'is_holiday', 'temperature', 'sfcWind', 'precipitation']
 target_col = 'bikes_available'
 
 # Transform the target variable for binary classification
@@ -21,28 +21,16 @@ y_train_reg = train_df[target_col]  # Cap the target values at 40
 
 # Initialize XGBoost Classifier with given hyperparameters
 clf_xgb = XGBClassifier(
-    colsample_bytree=0.5765133157615585,
-    gamma=2.8319073793101883,
-    learning_rate=0.015406375121368878,
-    max_depth=11,
-    min_child_weight=1,
-    n_estimators=70,
-    subsample=0.9033844439161279,
-    random_state=3,
+    n_estimators=100,
+    random_state=42,
     use_label_encoder=False,
     eval_metric='logloss'
 )
 
 # Initialize XGBoost Regressor with given hyperparameters
 reg_xgb = XGBRegressor(
-    colsample_bytree=0.6977924525180372,
-    gamma=4.897754201908785,
-    learning_rate=0.03899301447596341,
-    max_depth=9,
-    min_child_weight=5,
-    n_estimators=265,
-    subsample=0.6657489216128507,
-    random_state=3
+    n_estimators=100,
+    random_state=42
 )
 
 # Fit the models on the training data
