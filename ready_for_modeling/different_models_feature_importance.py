@@ -40,7 +40,7 @@ def plot_feature_importance(importance, names, model_type, city_name):
     print(f"Feature importance plot for {city_name} ({model_type}) saved.")
 
 
-# Function to plot heatmap of correlations
+
 def plot_correlation_heatmap(df, city_name):
     print(f"Plotting heatmap of correlations for {city_name}...")
     plt.figure(figsize=(12, 10))
@@ -51,7 +51,7 @@ def plot_correlation_heatmap(df, city_name):
     print(f"Heatmap of correlations for {city_name} saved.")
 
 
-# Function to plot pair plot
+
 def plot_pair_plot(df, city_name):
     print(f"Plotting pair plot for {city_name}...")
     plt.figure(figsize=(12, 12))
@@ -62,7 +62,7 @@ def plot_pair_plot(df, city_name):
     print(f"Pair plot for {city_name} saved.")
 
 
-# Function to plot distribution plot
+
 def plot_distribution_plot(df, city_name):
     print(f"Plotting distribution plot for {city_name}...")
     plt.figure(figsize=(12, 10))
@@ -74,7 +74,7 @@ def plot_distribution_plot(df, city_name):
     print(f"Distribution plots for {city_name} saved.")
 
 
-# Function to plot box plot
+
 def plot_box_plot(df, city_name):
     print(f"Plotting box plot for {city_name}...")
     plt.figure(figsize=(12, 10))
@@ -86,7 +86,7 @@ def plot_box_plot(df, city_name):
     print(f"Box plot for {city_name} saved.")
 
 
-# Function to plot scatter plot
+
 def plot_scatter_plot(df, city_name, target):
     print(f"Plotting scatter plot for {city_name}...")
     plt.figure(figsize=(12, 10))
@@ -99,7 +99,7 @@ def plot_scatter_plot(df, city_name, target):
     print(f"Scatter plots for {city_name} saved.")
 
 
-# Analyze each CSV file
+
 for csv_file in csv_files:
     print(f"Processing {csv_file}...")
     city_name = csv_file.split('_')[1].capitalize()
